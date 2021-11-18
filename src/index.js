@@ -1,5 +1,9 @@
+import './sass/main.scss'
+
+import { apiService } from './js/variables.global'
 import ApiService from './js/apiService';
-const apiService = new ApiService();
+
+
 async function getTrendingMovies() {
   apiService.setPage(5);
     const result = await apiService.getTrendingMovies();
@@ -8,3 +12,4 @@ async function getTrendingMovies() {
     console.log(genres);
 }
 getTrendingMovies();
+
