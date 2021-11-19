@@ -7,8 +7,8 @@ module.exports={genres:[{id:28,name:"Action"},{id:12,name:"Adventure"},{id:16,na
 },{"../db/genres":"z1IA"}],"R2Ya":[function(require,module,exports) {
 "use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.refs=exports.apiService=void 0;var e=r(require("./apiService"));function r(e){return e&&e.__esModule?e:{default:e}}const t=new e.default;exports.apiService=t;const o={homeBtn:document.querySelector("[data-home]"),libraryBtn:document.querySelector("[data-library]"),movieGallery:document.querySelector("[data-movie-gallery]")};exports.refs=o;
 },{"./apiService":"eQwa"}],"jh9c":[function(require,module,exports) {
-"use strict";var e=require("./variables.global"),n=o(require("../db/genres.json"));function o(e){return e&&e.__esModule?e:{default:e}}async function r(){const o=await e.apiService.getTrendingMovies();e.refs.movieGallery.innerHTML="",console.log(o),console.log(n.default)}document.addEventListener("DOMContentLoaded",r),e.refs.homeBtn.addEventListener("click",r);
+"use strict";var e=require("./variables.global"),n=o(require("../db/genres.json"));function o(e){return e&&e.__esModule?e:{default:e}}async function t(){const o=await e.apiService.getTrendingMovies();console.log(o),console.log(n.default)}document.addEventListener("DOMContentLoaded",t);
 },{"./variables.global":"R2Ya","../db/genres.json":"z1IA"}],"Focm":[function(require,module,exports) {
 "use strict";require("./sass/main.scss"),require("./js/trending.module");
 },{"./sass/main.scss":"clu1","./js/trending.module":"jh9c"}]},{},["Focm"], null)
-//# sourceMappingURL=/filmoteka/src.a356f896.js.map
+//# sourceMappingURL=/filmoteka/src.6b156b29.js.map
