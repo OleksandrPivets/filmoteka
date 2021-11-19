@@ -1,0 +1,26 @@
+{{#each this}}
+<li class="gallery__item">
+  <div class="film__card">
+    <img src="{{webformatURL}}" alt="{{tags}}" class="film__img film__link film__background" data-source="{{largeImageURL}}" />
+    <div class="film__data">
+      <p class="film__name">
+        {{name}}
+      </p>
+      <div>
+        <ul class="film__genre">
+          {{#each genre}}
+          <li>{{this.name}}</li>
+          {{/each}}
+        </ul>
+        <span>|</span>
+        <p class="film__relise">
+          {{yearsRelise}}
+        </p>
+        <p class="film__vote_average">
+          {{voteAverage}}
+        </p>
+      </div>
+    </div>
+  </div>
+</li>
+{{/each}}
