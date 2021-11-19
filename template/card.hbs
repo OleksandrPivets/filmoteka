@@ -1,10 +1,9 @@
 {{#each this}}
-<li class="gallery__item">
-  <div class="film__card">
-    <img src="{{webformatURL}}" alt="{{tags}}" class="film__img film__link film__background" data-source="{{largeImageURL}}" />
-    <div class="film__data">
-      <p class="film__name">
-        {{name}}
+<li class="film__card film__link">
+    <img src="{{poster_path}}" alt="{{title}}" class="film__img" data-source="{{backdrop_path}}" />
+    <div class="film__scribe">
+      <p class="film__title">
+        {{title}}
       </p>
       <div>
         <ul class="film__genre">
@@ -12,15 +11,15 @@
           <li>{{this.name}}</li>
           {{/each}}
         </ul>
-        <span>|</span>
-        <p class="film__relise">
-          {{yearsRelise}}
+        <p class="film__genre separator">|</p>
+        <p class="film__genre">
+          {{release_date}}
         </p>
-        <p class="film__vote_average">
-          {{voteAverage}}
+        <p class="film__vote_average is-hidden">
+          {{vote_average}}
         </p>
       </div>
     </div>
-  </div>
 </li>
 {{/each}}
+

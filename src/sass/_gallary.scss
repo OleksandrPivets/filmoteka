@@ -6,13 +6,9 @@
   --main-text-light-color: #000000;
   --main-text-dark-color: #ffffff;
   --main-text-genre-color: #ff6b08;
-  --main-text-vote-color: #FF6B01;
+  --main-background-vote-color: #FF6B01;
   --main-img-background-color: #ffb1d6;
 
-
-
-  // --height-img-mobile: 294;
-  // --width-img-mobile: 450;
 }
 
 $mobile: 320px;
@@ -23,6 +19,22 @@ ul {
   list-style: none;
   margin: 0;
   padding: 0;
+}
+
+main {
+  &.light-theme {
+    background-color: var(--main-background-light-color);
+    .film__title {
+      color: var(--main-text-light-color);
+    }
+  }
+
+  &.dark-theme {
+    background-color: var(--main-background-dark-color);
+    .film__title {
+      color: var(--main-text-dark-color);
+    }
+  }
 }
 
 .section {
@@ -115,31 +127,26 @@ ul {
     flex-direction: row;
   }
 
-  &__name {
+  &__title {
     font-family: var(--main-font);
     font-style: normal;
     font-weight: 500;
     font-size: 12px;
     line-height: 14px;
     text-transform: uppercase;
-    color: var(--main-text-light-color);
     margin: 0;
   }
 
-  &__genre,
-  &__relise {
+  &__genre {
     font-family: var(--main-font);
     font-style: normal;
     font-weight: 500;
     font-size: 12px;
     line-height: 16px;
-
     color: var(--main-text-genre-color);
     margin-top: 0;
     margin-bottom: 0;
   }
-
- 
 
   &__vote_average {
 
@@ -149,12 +156,12 @@ ul {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: var(--main-text-vote-color);
-    color: var(--main-text-dark-color);
+    background-color: var(--main-background-vote-color);
     margin-top: 0;
     margin-left: 10px;
     margin-bottom: 0;
 
+    color: var(--main-text-dark-color);
     font-family: var(--main-font);
     font-style: normal;
     font-weight: 500;
@@ -167,7 +174,7 @@ ul {
     text-transform: uppercase;
 
     &.is-hidden {
-      opacity: 0;
+      // opacity: 0;
     }
   }
 }
