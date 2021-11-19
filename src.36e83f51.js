@@ -11,4 +11,4 @@ module.exports={genres:[{id:28,name:"Action"},{id:12,name:"Adventure"},{id:16,na
 },{"./variables.global":"R2Ya","../db/genres.json":"z1IA"}],"Focm":[function(require,module,exports) {
 "use strict";require("./sass/main.scss"),require("./js/trending.module");
 },{"./sass/main.scss":"clu1","./js/trending.module":"jh9c"}]},{},["Focm"], null)
-//# sourceMappingURL=/filmoteka/src.0869862e.js.map
+//# sourceMappingURL=/filmoteka/src.36e83f51.js.map
