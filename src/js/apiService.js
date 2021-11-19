@@ -10,7 +10,7 @@ export default class ApiService {
     const response = await fetch(url);
     const result = await response.json();
     result.results.map(movie => {
-      movie.backdrop_path = 'https://image.tmdb.org/t/p/w500' + movie.backdrop_path;
+      movie.poster_path = 'https://image.tmdb.org/t/p/w500' + movie.poster_path;
     });
     return result;
   }
@@ -19,7 +19,7 @@ export default class ApiService {
     const response = await fetch(url);
     const result = await response.json();
     result.results.map(movie => {
-      movie.backdrop_path = 'https://image.tmdb.org/t/p/w500' + movie.backdrop_path;
+      movie.poster_path = 'https://image.tmdb.org/t/p/w500' + movie.poster_path;
     });
     return result;
   }
@@ -27,7 +27,7 @@ export default class ApiService {
     const url = `${BASE_URL}/movie/${id}?api_key=${API_KEY}`;
     const response = await fetch(url);
     const result = await response.json();
-    result.backdrop_path = 'https://image.tmdb.org/t/p/w500' + result.backdrop_path;
+    result.poster_path = 'https://image.tmdb.org/t/p/w500' + result.poster_path;
     return result;
   }
   async getGenres() {
