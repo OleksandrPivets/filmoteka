@@ -1,6 +1,8 @@
-
-@import './footer';
+// Стили для файла с примером HTML-фрагмента
+@import './variables';
 @import './base/common';
 @import './components/header';
 @import './components/library-header';
-
+@import './movie-card';
+@import './footer';
+@import './gallary';
