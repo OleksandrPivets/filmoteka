@@ -1,4 +1,4 @@
-.header{
+.header-library{
     background-image:linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
      url(.././images/library/lib_mobx1.jpg);
     margin-left: auto;
@@ -48,63 +48,34 @@
   margin-top: 49px;
 }
 .library-button{
-  width: 130px;
-  height: 44px;
+width: 130px;
+height: 44px;
+border-radius: 5px;
+border: 1px solid #FFFFFF;
+font-family: var(--main-font);
+font-style: normal;
+font-weight: 500;
+font-size: 12px;
+line-height: 1.33;
+color:var(--main-text-dark-color);
+text-transform: uppercase;
+background: transparent;
+@media screen and (min-width: 768px) {
+  width: 136px;
+}
+}
+.library-button:hover{
+  background: var(--main-background-vote-color);
+  border: 1px solid #FF6B01;
+box-shadow: 0px 8px 43px rgba(255, 107, 1, 0.6);
+}
+.library-button:focus{
+  background: var(--main-background-vote-color);
+box-shadow: 0px 8px 43px rgba(255, 107, 1, 0.6);
 }
 .library-button:first-child{
   margin-right: 20px;
+  @media screen and (min-width: 768px) {
+    margin-right: 15px;}
 }
-// .nav{
-//     display: flex;
-//     justify-content: space-between;
-// }
-// .header-container{
-//     padding-left: 20px;
-//     padding-right: 21px;
-//     padding-bottom: 97px;
-//     @media screen and (min-width: 768px) {
-//         padding-left: 71px;
-//         padding-right: 76px;
-//       }
-//       @media screen and (min-width: 1024px) {
-//         padding-left: 71px;
-//         padding-right: 71px;
-//       }
-// }
-// .nav-logo-title{
-// display: none;
-//   @media screen and (min-width: 768px) {
-// display: inline;
-// font-family: Roboto, sans-serif;
-// font-style: normal;
-// font-weight: 500;
-// font-size: 30px;
-// line-height: 1.17;
-// color: #FFFFFF;
-//   }
-// }
-// .header-logo__item{
-//   margin-top: 46px;
-//   @media screen and (min-width: 768px) {
-//     margin-right: 10px;
-//   }
-// }
-// .nav-list{
-//   display: flex;
-// }
-// .nav-list__item{
-//   margin-top: 58px;
-//   position: relative;
-// }
-// .nav-list__item:last-child{
-//   margin-left: 39px;
-// }
-// .nav-list__link{
-// font-family: Roboto, sans-serif;
-// font-style: normal;
-// font-weight: 500;
-// font-size: 12px;
-// line-height: 1.17;
-// text-transform: uppercase;
-// color: #FFFFFF;
-// }
+

@@ -41,15 +41,9 @@
       url(.././images/header/back_leptopx2.jpg);
     max-width: 1024;
   }
-}
-.nav{
-    display: flex;
-    justify-content: space-between;
-}
-.header-container{
+  &-container{
     padding-left: 20px;
     padding-right: 21px;
-    padding-bottom: 97px;
     @media screen and (min-width: 768px) {
         padding-left: 71px;
         padding-right: 76px;
@@ -58,44 +52,52 @@
         padding-left: 71px;
         padding-right: 71px;
       }
-}
-.nav-logo-title{
-display: none;
-  @media screen and (min-width: 768px) {
-display: inline;
-font-family: Roboto, sans-serif;
-font-style: normal;
-font-weight: 500;
-font-size: 30px;
-line-height: 1.17;
-color: #FFFFFF;
+    }
+  &-logo__item{
+    margin-top: 46px;
+    @media screen and (min-width: 768px) {
+      margin-right: 10px;
+    }
   }
 }
-.header-logo__item{
-  margin-top: 46px;
-  @media screen and (min-width: 768px) {
-    margin-right: 10px;
-  }
+.nav{
+    display: flex;
+    justify-content: space-between;
+   &-logo-title{
+      display: none;
+        @media screen and (min-width: 768px) {
+      display: inline;
+      font-family: var(--main-font);
+      font-style: normal;
+      font-weight: 500;
+      font-size: 30px;
+      line-height: 1.17;
+      color: #FFFFFF;
+        }
+      }
+      &-list{
+        display: flex;
+      }
+      &-list__item{
+        margin-top: 58px;
+        position: relative;
+      }
+      &-list__link{
+        font-family: var(--main-font);
+      font-style: normal;
+      font-weight: 500;
+      font-size: 12px;
+      line-height: 1.17;
+      text-transform: uppercase;
+      color:var(--main-text-dark-color);
+      }
 }
-.nav-list{
-  display: flex;
-}
-.nav-list__item{
-  margin-top: 58px;
-  position: relative;
-}
+
+
 .nav-list__item:last-child{
   margin-left: 39px;
 }
-.nav-list__link{
-font-family: Roboto, sans-serif;
-font-style: normal;
-font-weight: 500;
-font-size: 12px;
-line-height: 1.17;
-text-transform: uppercase;
-color: #FFFFFF;
-}
+
 .form-box{
   margin-top: 38px;
   display: flex;
@@ -110,24 +112,24 @@ color: #FFFFFF;
   background: none;
   border: none;
   outline: none;
-  font-family: Roboto;
+  font-family: var(--main-font);
   font-style: normal;
   font-weight: normal;
   font-size: 14px;
   line-height: 16px;
-  color: #FFFFFF;
+  color:var(--main-text-dark-color);
 }
 .search-input::-webkit-input-placeholder { /* WebKit browsers */
-  color:    #FFFFFF;
+  color:var(--main-text-dark-color);
 }
 :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
-  color:    #FFFFFF;
+  color:var(--main-text-dark-color);
 }
 ::-moz-placeholder { /* Mozilla Firefox 19+ */
-  color:    #FFFFFF;
+  color:var(--main-text-dark-color);
 }
 :-ms-input-placeholder { /* Internet Explorer 10+ */
-  color:    #FFFFFF;
+  color:var(--main-text-dark-color);
 }
 .current::after {
     position: absolute;
@@ -136,7 +138,7 @@ color: #FFFFFF;
     display: block;
     width: 100%;
     height: 3px;
-    background-color: #ff6b08;
+    background-color:var(--main-text-genre-color);
   }
   .form-search{
     border-bottom: 0.5px solid white;
