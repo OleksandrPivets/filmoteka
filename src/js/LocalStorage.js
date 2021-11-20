@@ -1,0 +1,60 @@
+//function for getting values from queue and watched lists in local storage
+function getQueue() {
+  return getFromList('queue');
+}
+function getWatched() {
+  return getFromList('watched');
+}
+
+//function for checking if value is in queue or watched lists in local storage
+function checkIfInQueue(id) {
+  const queue = getQueue();
+  return queue.includes(id);
+}
+function checkIfInWatched(id) {
+  const watched = getWatched();
+  return watched.includes(id);
+}
+
+//function to remove value from queue or watched lists in local storage by id
+//add value="id" to button
+function removeFromQueue(event) {
+  const queue = getQueue();
+  localStorage.setItem('queue', JSON.stringify(queue.filter(el => el !== event.target.value)));
+}
+function removeFromWatched(event) {
+  const watched = getWatched();
+  localStorage.setItem('watched', JSON.stringify(watched.filter(el => el !== event.target.value)));
+}
+
+// functions for adding to queue and watched lists in local storage
+function addToQueue(event) {
+  addToList('queue', event.target.value);
+}
+function addToWatched(event) {
+  addToList('watched', event.target.value);
+}
+
+// function for adding to list in local storage
+function addToList(listName, value) {
+  let list = JSON.parse(localStorage.getItem(`${listName}`));
+  if (!list) list = [];
+  list.push(parseInt(value));
+  localStorage.setItem(`${listName}`, JSON.stringify(list));
+}
+// function for getting values from a list in local storage
+function getFromList(listName) {
+  let list = JSON.parse(localStorage.getItem(`${listName}`));
+  if (list) return list;
+  return [];
+}
+export {
+  getQueue,
+  getWatched,
+  checkIfInQueue,
+  checkIfInWatched,
+  removeFromQueue,
+  removeFromWatched,
+  addToQueue,
+  addToWatched,
+};
