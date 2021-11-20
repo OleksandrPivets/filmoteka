@@ -1,13 +1,3 @@
-//move refs to main refs
-// const refs = {
-//   addToWatched: document.querySelector('.js-add-watched'),
-//   addToQueue: document.querySelector('.js-add-queue'),
-// };
-//when to remove event listeners and when to add => when modal opens and closes
-// refs.addToQueue.addEventListener('click', addToQueue);
-// refs.addToWatched.addEventListener('click', addToWatched);
-//what to do for delete (buttons) will we change ids? when to
-
 //function for getting values from queue and watched lists in local storage
 function getQueue() {
   return getFromList('queue');
@@ -68,16 +58,3 @@ export {
   addToQueue,
   addToWatched,
 };
-
-// example of usage
-// import {
-//   getQueue,
-//   getWatched,
-//   checkIfInQueue,
-//   checkIfInWatched,
-//   removeFromQueue,
-//   removeFromWatched,
-//   addToQueue,
-//   addToWatched,
-// } from './js/LocalStorage';
-// console.log(getWatched());
