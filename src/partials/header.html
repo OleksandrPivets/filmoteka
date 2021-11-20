@@ -1,35 +1,34 @@
 <header class="header">
-    <div class="header-container">
-        <nav class="nav">
-            <div class="nav-logo">
-                <a href="./index.html" class="header-logo__icon">
-                    <svg class="header-logo__item" width="24px" height="24px">
-                        <use class="" href="./images/sprite-header.svg#icon-logo" ></use>
-                      </svg>
-                    <span class="nav-logo-title">Filmoteka
-                    </span>
-                </a>
-            </div>
-            <div class="nav-box">
-                <ul class="nav-list">
-                    <li class="nav-list__item">
-                        <a href="./index.html" class="nav-list__link current">Home</a>
-                    </li>
-                    <li class="nav-list__item">
-                        <a href="./library.html" class="nav-list__link">my library</a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-        <div class="form-box">
-            <form id="form-search" class="form-search" >
-                <input type="text" class="search-input" placeholder="Поиск фильмов">
-                <button class="search-button"  type="submit">
-                    <svg class="search-icon" width="12px" height="12px" >
-                        <use class="" href="./images/sprite-header.svg#icon-search"  ></use>
-                      </svg>
-                </button>
-            </form>
-        </div>
+  <div class="header-container">
+    <nav class="nav">
+      <div data-home class="nav-logo">
+        <a href="./index.html" class="header-logo__icon">
+          <svg class="header-logo__item" width="24px" height="24px">
+            <use class="" href="./images/sprite-header.svg#icon-logo"></use>
+          </svg>
+          <span class="nav-logo-title">Filmoteka </span>
+        </a>
+      </div>
+      <div class="nav-box">
+        <ul class="nav-list" data-navigation>
+          <li class="nav-list__item">
+            <a href="./index.html" class="nav-list__link current" data-home>Home</a>
+          </li>
+          <li class="nav-list__item">
+            <a href="./library.html" class="nav-list__link" data-library>my library</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <div class="form-box">
+      <form id="form-search" class="form-search">
+        <input type="text" class="search-input" placeholder="Поиск фильмов" />
+        <button class="search-button" type="submit">
+          <svg class="search-icon" width="12px" height="12px">
+            <use class="" href="./images/sprite-header.svg#icon-search"></use>
+          </svg>
+        </button>
+      </form>
     </div>
+  </div>
 </header>

@@ -21,9 +21,10 @@ export const apiService = new ApiService(); //  Апишка
 
 //  Ниже ссылки на обьекты DOM-дерева 
 export const refs = {
-    homeBtn: document.querySelector('[data-home]'),                     //  Просьба добавить эти два атрибута на кнопки в хедере
+    navList: document.querySelector('[data-navigation]'),
+    homeBtn: document.querySelectorAll('[data-home]'),                     //  Просьба добавить эти два атрибута на кнопки в хедере
     libraryBtn: document.querySelector('[data-library]'),               //  Просьба добавить эти два атрибута на кнопки в хедере
-    movieGallery: document.querySelector('[data-movie-gallery]')        //  Этот атрибут повесить на галерею
-
-
+    movieGallery: document.querySelector('[data-movie-gallery]'),       //  Этот атрибут повесить на галерею
+    searchForm: document.querySelector('#form-search'),
+    searchInput: document.querySelector('.search-input'),
 }
