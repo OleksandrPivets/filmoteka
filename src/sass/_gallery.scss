@@ -47,6 +47,7 @@ body {
 .separator {
   margin: 0 4px;
 }
+
 .gallery {
   
   &__title {
@@ -79,6 +80,7 @@ body {
 
   &__card {
     margin-bottom: 20px;
+    border-radius: 5px;
     @media screen and (min-width: $mobile) and (max-width: $tablet - 1px) {
       width: 280px;
       height: 440px;
@@ -94,15 +96,21 @@ body {
   }
 
   &__img {
-    @media screen and (min-width: $mobile) {
-      height:398px ;
-    }
     width: 100%;
     border: none;
     border-radius: 5px;
     background-color: var(--main-img-background-color);
     margin: 0;
+    @media screen and (min-width: $mobile) {
+      height:398px ;
+    }
+    &:hover {
+      transform: scale(1.012);
+      cursor: pointer;
+      box-shadow: 1px 1px 4px 1px rgba(0, 0, 0, 0.4);
+    }    
   }
+
   &__scribe {
     margin-top: 10px;
   }
@@ -117,7 +125,7 @@ body {
     font-style: normal;
     font-weight: 500;
     font-size: 12px;
-    line-height: 14px;
+    line-height: 1.1666;
     text-transform: uppercase;
     margin: 0;
   }
@@ -127,7 +135,7 @@ body {
     font-style: normal;
     font-weight: 500;
     font-size: 12px;
-    line-height: 16px;
+    line-height: 1.3333;
     color: var(--main-text-genre-color);
     margin-top: 0;
     margin-bottom: 0;
@@ -151,7 +159,7 @@ body {
     font-style: normal;
     font-weight: 500;
     font-size: 12px;
-    line-height: 14px;
+    line-height: 1.1666;
     
     display: flex;
     align-items: center;
