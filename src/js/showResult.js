@@ -1,4 +1,6 @@
 import filmTemplate from './template/card';
+import {refs} from './js/refs';
+
 
 // Выводим значение
 export default function showResult(array) {
