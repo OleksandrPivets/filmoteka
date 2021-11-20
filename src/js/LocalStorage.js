@@ -26,14 +26,15 @@ function checkIfInWatched(id) {
   return watched.includes(id);
 }
 
-//function to remove value from queue or watched lists in local storage
-function removeFromQueue(id) {
+//function to remove value from queue or watched lists in local storage by id
+//add value="id" to button
+function removeFromQueue(event) {
   const queue = getQueue();
-  localStorage.setItem('queue', JSON.stringify(queue.filter(el => el !== id)));
+  localStorage.setItem('queue', JSON.stringify(queue.filter(el => el !== event.target.value)));
 }
-function removeFromWatched(id) {
+function removeFromWatched(event) {
   const watched = getWatched();
-  localStorage.setItem('watched', JSON.stringify(watched.filter(el => el !== id)));
+  localStorage.setItem('watched', JSON.stringify(watched.filter(el => el !== event.target.value)));
 }
 
 // functions for adding to queue and watched lists in local storage
