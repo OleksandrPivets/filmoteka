@@ -9,30 +9,37 @@ function getWatched() {
 //function for checking if value is in queue or watched lists in local storage
 function checkIfInQueue(id) {
   const queue = getQueue();
-  return queue.includes(id);
+  return queue.includes(parseInt(id));
 }
 function checkIfInWatched(id) {
   const watched = getWatched();
-  return watched.includes(id);
+  return watched.includes(parseInt(id));
 }
 
 //function to remove value from queue or watched lists in local storage by id
-//add value="id" to button
 function removeFromQueue(event) {
   const queue = getQueue();
-  localStorage.setItem('queue', JSON.stringify(queue.filter(el => el !== event.target.value)));
+  localStorage.setItem(
+    'queue',
+    JSON.stringify(queue.filter(el => el !== parseInt(event.target.dataset.value))),
+  );
 }
 function removeFromWatched(event) {
   const watched = getWatched();
-  localStorage.setItem('watched', JSON.stringify(watched.filter(el => el !== event.target.value)));
+  localStorage.setItem(
+    'watched',
+    JSON.stringify(watched.filter(el => el !== parseInt(event.target.dataset.value))),
+  );
 }
 
 // functions for adding to queue and watched lists in local storage
 function addToQueue(event) {
-  addToList('queue', event.target.value);
+  if (checkIfInQueue(event.target.dataset.value)) return;
+  addToList('queue', event.target.dataset.value);
 }
 function addToWatched(event) {
-  addToList('watched', event.target.value);
+  if (checkIfInWatched(event.target.dataset.value)) return;
+  addToList('watched', event.target.dataset.value);
 }
 
 // function for adding to list in local storage
