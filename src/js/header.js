@@ -1,24 +1,19 @@
-document.getElementById('library').addEventListener('click',function(e){
-    document.getElementById('header').classList.add('header-library');
-    document.getElementById('home').classList.remove('current');
-    document.getElementById('library').classList.add('current');
-    document.getElementById('form-box').classList.add('is-hidden');
-    document.getElementById('button-box').classList.remove('is-hidden');
-    document.getElementById('form-search').classList.add('form-search__border');
+import { refs } from './variables.global';
+
+refs.libraryBtn.addEventListener('click', function (event) {
+    refs.header.classList.add('header-library');
+    refs.homeBtn.classList.remove('current');
+    refs.libraryBtn.classList.add('current');
+    refs.headerFormBox.classList.add('is-hidden');
+    refs.headerButtonBox.classList.remove('is-hidden');
+    refs.searchForm.classList.add('form-search__border');
+    event.preventDefault();
 });
-document.getElementById('home').addEventListener('click',function(e){
-    document.getElementById('header').classList.remove('header-library');
-    document.getElementById('form-search').classList.remove('form-search__border');
-    document.getElementById('library').classList.remove('current');
-    document.getElementById('home').classList.add('current');
-    document.getElementById('form-box').classList.remove('is-hidden');
-    document.getElementById('button-box').classList.add('is-hidden');
-});
-document.getElementById('logo').addEventListener('click',function(e){
-    document.getElementById('header').classList.remove('header-library');
-    document.getElementById('library').classList.remove('current');
-    document.getElementById('home').classList.add('current');
-    document.getElementById('button-box').classList.add('is-hidden');
-    document.getElementById('form-box').classList.remove('is-hidden');
-    document.getElementById('form-search').classList.remove('form-search__border');
-});
+refs.homeBtn.forEach(element => element.addEventListener('click',function(){
+    refs.header.classList.remove('header-library');
+    refs.searchForm.classList.remove('form-search__border');
+    refs.libraryBtn.classList.remove('current');
+    refs.homeBtn.classList.add('current');
+    refs.headerFormBox.classList.remove('is-hidden');
+    refs.headerButtonBox.classList.add('is-hidden');
+}));

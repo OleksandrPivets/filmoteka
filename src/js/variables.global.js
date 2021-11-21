@@ -27,4 +27,7 @@ export const refs = {
     movieGallery: document.querySelector('[data-movie-gallery]'),       //  Этот атрибут повесить на галерею
     searchForm: document.querySelector('#form-search'),
     searchInput: document.querySelector('.search-input'),
+    header: document.getElementById('header'),
+    headerFormBox: document.getElementById('form-box'),
+    headerButtonBox: document.getElementById('button-box'),
 }
