@@ -4,7 +4,6 @@ import genres from '../db/genres.json';
 import galleryItems from '../templates/card.hbs'
 
 
-
 async function renderTrending() {
     const trending = await apiService.getTrendingMovies();
     refs.movieGallery.insertAdjacentHTML('beforeend', galleryItems(trending.results));

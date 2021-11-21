@@ -5,7 +5,7 @@ export default function showResult(array) {
     return
   };
   if (array.genres.length === 0) { 
-    array.genres[0] = 'Other'; // если нет данных
+    array.genres[0] = 'Unknown'; // если нет данных
   }  
   if (array.genres.length >= 3) {
     array.genres = array.genres.slice(0, 2);  // делаем обрезание ;-))
