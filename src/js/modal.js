@@ -17,7 +17,7 @@ function onImageClick(event) {
   const movieCard = event.target.closest('li');
   const movieId = movieCard.dataset.id;  
   event.preventDefault();
-  const isGalleryImage = event.target.classList.contains('card-img');
+  const isGalleryImage = event.target.classList.contains('film__img');
   window.addEventListener('keydown', onEscKeyPress);
   if (!isGalleryImage) {
     return;
@@ -46,6 +46,7 @@ function onEscKeyPress(event) {
 
 async function renderMovieInfo(id) {
   const movieInfo = await apiService.getMovieById(id);
+  console.log(movieInfo)
   modalRefs.movieImg.src = `${movieInfo.poster_path}`;
   modalRefs.movieInfo.insertAdjacentHTML('beforeend', movieInfoTmp(movieInfo));
 }
