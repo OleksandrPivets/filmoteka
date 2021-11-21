@@ -1,6 +1,7 @@
 const BASE_URL = 'https://api.themoviedb.org/3';
 const API_KEY = 'a2131ad5d6a3f97436f48b66c08b88ca';
 import genres from '../db/genres';
+import prepareForShow from './showResult';
 export default class ApiService {
   constructor() {
     this.searchQuery = '';
@@ -13,6 +14,7 @@ export default class ApiService {
     result.results.map(movie => {
       movie.poster_path = 'https://image.tmdb.org/t/p/w500' + movie.poster_path;
       movie.genres = movie.genre_ids.map(id => genres.genres.find(gen => gen.id === id).name);
+      prepareForShow(movie);
       return movie;
     });
     return result;
@@ -24,6 +26,7 @@ export default class ApiService {
     result.results.map(movie => {
       movie.poster_path = 'https://image.tmdb.org/t/p/w500' + movie.poster_path;
       movie.genres = movie.genre_ids.map(id => genres.genres.find(gen => gen.id === id).name);
+      prepareForShow(movie);
       return movie;
     });
     return result;
