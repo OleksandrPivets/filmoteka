@@ -1,0 +1,23 @@
+{{#each this}}
+<h2 class="movie-info__title">{{title}}</h2>
+<div class="movie-info__general">
+  <ul class="list-properties">
+    <li>Vote / Votes</li>
+    <li>Popularity</li>
+    <li>Original Title</li>
+    <li>Genre</li>
+  </ul>
+  <ul class="list-value">
+    <li class="vote"><span class="movie__vote_average">{{vote_average}}</span>/<span class="movie__votes">{{vote_count}}</span></li>
+    <li>{{popularity}}</li>
+    <li class="movie-title">{{original_title}}</li>
+    <li>{{genres.name}}</li>
+  </ul>
+</div>
+
+<h3 class="movie-title">About</h3>
+<p class="movie-overview">{{overview}}</p>
+
+<button class="button-modal button-watched" type="button" data-value="{{id}}">add to Watched</button>
+<button class="button-modal button-queue" type="button" data-value="{{id}}">add to queue</button>
+{{/each}}
