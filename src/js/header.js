@@ -1,0 +1,24 @@
+document.getElementById('library').addEventListener('click',function(e){
+    document.getElementById('header').classList.add('header-library');
+    document.getElementById('home').classList.remove('current');
+    document.getElementById('library').classList.add('current');
+    document.getElementById('form-box').classList.add('is-hidden');
+    document.getElementById('button-box').classList.remove('is-hidden');
+    document.getElementById('form-search').classList.add('form-search__border');
+});
+document.getElementById('home').addEventListener('click',function(e){
+    document.getElementById('header').classList.remove('header-library');
+    document.getElementById('form-search').classList.remove('form-search__border');
+    document.getElementById('library').classList.remove('current');
+    document.getElementById('home').classList.add('current');
+    document.getElementById('form-box').classList.remove('is-hidden');
+    document.getElementById('button-box').classList.add('is-hidden');
+});
+document.getElementById('logo').addEventListener('click',function(e){
+    document.getElementById('header').classList.remove('header-library');
+    document.getElementById('library').classList.remove('current');
+    document.getElementById('home').classList.add('current');
+    document.getElementById('button-box').classList.add('is-hidden');
+    document.getElementById('form-box').classList.remove('is-hidden');
+    document.getElementById('form-search').classList.remove('form-search__border');
+});
