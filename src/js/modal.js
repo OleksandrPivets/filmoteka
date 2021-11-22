@@ -19,8 +19,6 @@ const modalRefs = {
   movieImg: document.querySelector('[data-movie-img]'),
 };
 
-let buttonModalRefs = {};
-
 refs.movieGallery.addEventListener('click', onImageClick);
 modalRefs.closeModalBtn.addEventListener('click', onCloseBtnClick);
 modalRefs.lightboxOverlayEl.addEventListener('click', onOverlayClick);
@@ -43,8 +41,8 @@ function onCloseBtnClick() {
   modalRefs.movieInfo.innerHTML = '';
   modalRefs.lightboxEl.classList.remove('is-open');
 
-  buttonModalRefs.button_queue.removeEventListener('click', addToQueue);
-  buttonModalRefs.button_watched.removeEventListener('click', addToWatched);
+  modalRefs.button_queue.removeEventListener('click', addToQueue);
+  modalRefs.button_watched.removeEventListener('click', addToWatched);
 }
 
 function onOverlayClick(event) {
@@ -66,8 +64,8 @@ async function renderMovieInfo(id) {
   modalRefs.movieInfo.insertAdjacentHTML('beforeend', movieInfoTmp(movieInfo));
 
   //Adding EventListeners
-  buttonModalRefs.button_watched = document.querySelector('.button-watched');
-  buttonModalRefs.button_queue = document.querySelector('.button-queue');
-  buttonModalRefs.button_queue.addEventListener('click', addToQueue);
-  buttonModalRefs.button_watched.addEventListener('click', addToWatched);
+  modalRefs.button_watched = document.querySelector('.button-watched');
+  modalRefs.button_queue = document.querySelector('.button-queue');
+  modalRefs.button_queue.addEventListener('click', addToQueue);
+  modalRefs.button_watched.addEventListener('click', addToWatched);
 }
