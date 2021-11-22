@@ -29,6 +29,7 @@
     "bootstrap": "^5.1.3",
     "handlebars": "^4.7.7",
     "lodash": "^4.17.21",
-    "notiflix": "^3.2.2"
+    "notiflix": "^3.2.2",
+    "spiner": "^1.0.0"
   }
 }

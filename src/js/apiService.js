@@ -1,7 +1,7 @@
 const BASE_URL = 'https://api.themoviedb.org/3';
 const API_KEY = 'a2131ad5d6a3f97436f48b66c08b88ca';
 import genres from '../db/genres';
-import prepareForShow from './showResult';
+import prepareForShow from './prepareForShow';
 export default class ApiService {
   constructor() {
     this.searchQuery = '';
