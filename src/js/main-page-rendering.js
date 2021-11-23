@@ -68,6 +68,8 @@ export async function renderOnStart() {
     totalPages = trending.total_pages;
     console.log(totalPages)
     renderPagesList()
+    const onLoadGallery = document.querySelectorAll('.film__card');
+  delayIndicator(onLoadGallery, "film__link", 'film__img', false);
 }
 
 //  Пока не доделано. Для доделки и переделки нужен пагинатор
