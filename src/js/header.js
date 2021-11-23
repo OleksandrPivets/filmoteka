@@ -1,4 +1,6 @@
 import { refs } from './variables.global';
+import { renderHome } from './main-page-rendering';
+import { renderQueue, renderWatched } from './library-rendering';
 
 refs.libraryBtn.addEventListener('click', function (event) {
     refs.header.classList.add('header-library');
@@ -12,6 +14,9 @@ refs.libraryBtn.addEventListener('click', function (event) {
     refs.headerButtonBox.classList.remove('is-hidden');
     refs.searchForm.classList.add('form-search__border');
     event.preventDefault()
+    renderWatched()
+    refs.watchedBtn.addEventListener('click', renderWatched);
+    refs.queueBtn.addEventListener('click', renderQueue);
 });
 refs.homeBtn.forEach(element => element.addEventListener('click',function(){
     refs.header.classList.remove('header-library');
@@ -24,4 +29,7 @@ refs.homeBtn.forEach(element => element.addEventListener('click',function(){
     });
     refs.headerFormBox.classList.remove('is-hidden');
     refs.headerButtonBox.classList.add('is-hidden');
+    refs.watchedBtn.removeEventListener('click', renderWatched);
+    refs.queueBtn.removeEventListener('click', renderQueue);
+    renderHome();
 }));

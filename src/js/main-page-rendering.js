@@ -24,7 +24,7 @@ async function renderSearchResults(searchQuery) {
     console.log(movies);
 }
 
-const renderHome = (event) => {
+export const renderHome = (event) => {
     event.preventDefault();
     refs.movieGallery.innerHTML = '';
     renderTrending();
@@ -59,4 +59,4 @@ document.addEventListener('DOMContentLoaded', renderTrending);
 removeAutoLoad();
 
 refs.searchForm.addEventListener('submit', search);
-refs.homeBtn.forEach(btn => btn.addEventListener('click', renderHome));
+// refs.homeBtn.forEach(btn => btn.addEventListener('click', renderHome));

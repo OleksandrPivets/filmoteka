@@ -24,14 +24,14 @@ modalRefs.closeModalBtn.addEventListener('click', onCloseBtnClick);
 modalRefs.lightboxOverlayEl.addEventListener('click', onOverlayClick);
 
 function onImageClick(event) {
-  const movieCard = event.target.closest('li');
-  const movieId = movieCard.dataset.id;
-  event.preventDefault();
   const isGalleryImage = event.target.classList.contains('film__img');
-  window.addEventListener('keydown', onEscKeyPress);
   if (!isGalleryImage) {
     return;
   }
+  const movieCard = event.target.closest('li');
+  const movieId = movieCard.dataset.id;
+  event.preventDefault();
+  window.addEventListener('keydown', onEscKeyPress);
   modalRefs.lightboxEl.classList.add('is-open');
   renderMovieInfo(movieId);
 }
