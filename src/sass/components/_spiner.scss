@@ -18,7 +18,7 @@ $repetition: infinite;
   width: $width;
   height: $height;
   position: relative;
-  transform-origin: ($width+$border)/2 ($height+$border)/2;
+  transform-origin: ($width + $border)/2 ($height + $border)/2;
 
   .spinner {
     display: block;
@@ -82,8 +82,4 @@ $repetition: infinite;
   to {
     transform: rotate(-360deg);
   }
-}
-// работает только в галлерее на карточках фильмов - странно
-.is-hidden {
-  display: none;
 }
