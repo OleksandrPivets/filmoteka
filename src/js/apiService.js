@@ -67,4 +67,7 @@ export default class ApiService {
   set query(newQuery) {
     this.searchQuery = newQuery;
   }
+  pagination(el) {
+    this.page = page
+  }
 }
