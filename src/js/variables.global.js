@@ -31,7 +31,6 @@ export const refs = {
     headerFormBox: document.getElementById('form-box'),
     headerButtonBox: document.getElementById('button-box'),
 
-    // пагинация
     paginationList: document.querySelector('.pagination-box'),
     pageList: document.querySelector('.pages'),
     lastBtn: document.getElementById('last-page'),
@@ -39,4 +38,7 @@ export const refs = {
     nextBtn: document.getElementById('button-next'),
     firstPage: document.querySelector('.first'),
     lastPage: document.querySelector('.last'),
+
+    watchedBtn: document.querySelector('[data-watched]'),
+    queueBtn: document.querySelector('[data-queue]'),
 }

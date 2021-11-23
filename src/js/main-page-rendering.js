@@ -4,7 +4,7 @@ import genres from '../db/genres.json';
 import galleryItems from '../templates/card.hbs'
 
 
-async function renderTrending() {
+export async function renderTrending() {
     const trending = await apiService.getTrendingMovies();
     refs.movieGallery.insertAdjacentHTML('beforeend', galleryItems(trending.results));
     console.log(trending);
@@ -24,8 +24,9 @@ async function renderSearchResults(searchQuery) {
     console.log(movies);
 }
 
-const renderHome = (event) => {
+export const renderHome = (event) => {
     event.preventDefault();
+    apiService.resetPage();
     refs.movieGallery.innerHTML = '';
     renderTrending();
     
@@ -59,4 +60,4 @@ document.addEventListener('DOMContentLoaded', renderTrending);
 removeAutoLoad();
 
 refs.searchForm.addEventListener('submit', search);
-refs.homeBtn.forEach(btn => btn.addEventListener('click', renderHome));
+// refs.homeBtn.forEach(btn => btn.addEventListener('click', renderHome));
