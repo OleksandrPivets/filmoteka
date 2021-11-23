@@ -4,7 +4,7 @@ import genres from '../db/genres.json';
 import galleryItems from '../templates/card.hbs'
 
 
-async function renderTrending() {
+export async function renderTrending() {
     const trending = await apiService.getTrendingMovies();
     refs.movieGallery.insertAdjacentHTML('beforeend', galleryItems(trending.results));
     console.log(trending);
@@ -26,6 +26,7 @@ async function renderSearchResults(searchQuery) {
 
 export const renderHome = (event) => {
     event.preventDefault();
+    apiService.resetPage();
     refs.movieGallery.innerHTML = '';
     renderTrending();
     
