@@ -1,6 +1,6 @@
 body {
   font-family: Roboto, sans-serif;
-  
+
   &.light-theme {
     background-color: var(--main-background-light-color);
 
@@ -62,8 +62,4 @@ a {
 }
 ul {
   padding: 0;
-}
-
-.is-hidden {
-  display: none;
 }
