@@ -30,4 +30,6 @@ export const refs = {
     header: document.getElementById('header'),
     headerFormBox: document.getElementById('form-box'),
     headerButtonBox: document.getElementById('button-box'),
+    watchedBtn: document.querySelector('[data-watched]'),
+    queueBtn: document.querySelector('[data-queue]'),
 }
