@@ -1,5 +1,7 @@
 {{#each this}}
-<li class="film__card film__link" data-id="{{id}}">
+<li class="film__card" data-id="{{id}}">
+  <div class="film__link">
+    {{!-- site for spinner --}}
     <img src="{{poster_path}}" alt="{{title}}" class="film__img touch-transform" />
     <div class="film__scribe">
       <p class="film__title">
@@ -14,6 +16,7 @@
         </p>
       </div>
     </div>
+  </div>
 </li>
 {{/each}}
 

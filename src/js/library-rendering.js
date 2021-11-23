@@ -1,6 +1,7 @@
 import { apiService, refs } from './variables.global';
 import { getQueue, getWatched } from './LocalStorage';
 import galleryItems from '../templates/card.hbs';
+import prepareForShow from './prepareForShow';
 
 export async function renderWatched() {
     const watchedIds = getWatched();
@@ -27,11 +28,13 @@ export async function renderQueue(){
 };
 
 async function getLibraryMovies(ids) {
-    const movies = await Promise.all(
-        ids.map(async function getWatchedMovie(id) {
-        const movie = await apiService.getMovieById(id);
-        return movie;
-    }))
-    return movies;
+  const movies = await Promise.all(
+    ids.map(async function getWatchedMovie(id) {
+      const movie = await apiService.getMovieById(id);
+      prepareForShow(movie);
+      return movie;
+    })
+  );
+  return movies;
 };
 
