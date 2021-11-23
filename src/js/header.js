@@ -19,7 +19,7 @@ function openLibrary (event) {
     refs.queueBtn.addEventListener('click', renderQueue);
 }
 
-function openHome(){
+function openHome(event){
     refs.header.classList.remove('header-library');
     refs.searchForm.classList.remove('form-search__border');
     refs.libraryBtn.classList.remove('current');
@@ -32,7 +32,7 @@ function openHome(){
     refs.headerButtonBox.classList.add('is-hidden');
     refs.watchedBtn.removeEventListener('click', renderWatched);
     refs.queueBtn.removeEventListener('click', renderQueue);
-    renderHome();
+    renderHome(event);
 }
 
 refs.libraryBtn.addEventListener('click', openLibrary);
