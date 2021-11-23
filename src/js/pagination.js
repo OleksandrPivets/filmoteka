@@ -1,6 +1,6 @@
 import markupMovie from "../templates/card.hbs";
 import { apiService, refs } from "../js/variables.global";
-import { renderTrending } from './main-page-rendering';
+import { renderTrending, totalPages } from './main-page-rendering';
 
 // export default refs = {
 //   paginationList: document.querySelector('.pagination-box'),
@@ -13,14 +13,21 @@ import { renderTrending } from './main-page-rendering';
 // }
 
 
-let currentPage = 1;
-let totalPages;
-const pageRange = 2;
 
-function renderPagesList() {
+
+let currentPage = 1;
+// let totalPages;
+const pageRange = 2;
+// setTotalPages();
+// async function setTotalPages() {
+//   totalPages = await renderOnStart();
+//   console.log(totalPages);
+// }
+
+async function renderPagesList() {
   const start = currentPage - pageRange;
   const end = currentPage + pageRange;
-
+  
   for (let i = start; i <= end; i += 1) {
     if (i > 0 && i <= totalPages) {
       refs.pageList.insertAdjacentHTML(
@@ -31,15 +38,15 @@ function renderPagesList() {
   }
 }
 
-async function getMoviesCount() {
+// async function getMoviesCount() {
 
-  const movies = await apiService.getTrendingMovies();
+//   const movies = await apiService.getTrendingMovies();
   
-  console.log('movies: ' + JSON.stringify(movies.page));
-  return movies.length;
-}
+//   console.log('movies: ' + JSON.stringify(movies.page));
+//   return movies.length;
+// }
 
-getMoviesCount()
+// getMoviesCount()
 
 
 
@@ -72,4 +79,8 @@ function scrollPage() {
   } catch (error) {
     console.log(error);
   }
+}
+
+export {
+  renderPagesList,
 }

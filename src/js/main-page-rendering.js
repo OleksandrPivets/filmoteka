@@ -2,14 +2,16 @@ import { apiService, refs } from './variables.global';
 import genres from '../db/genres.json';
 // import galleryItems from '../templates/movie-card.hbs'; // << уже не нужно
 import galleryItems from '../templates/card.hbs'
+import { renderPagesList } from './pagination'
 
+export let totalPages;
 
 export async function renderTrending() {
     const trending = await apiService.getTrendingMovies();
     refs.movieGallery.insertAdjacentHTML('beforeend', galleryItems(trending.results));
     console.log(trending);
     console.log(genres);
-    
+    renderPagesList();
 }
 
 async function renderSearchResults(searchQuery) {
@@ -49,13 +51,21 @@ const search = (event) => {
 
 const removeAutoLoad = () => {
     setTimeout(() => {
-        document.removeEventListener('DOMContentLoaded', renderTrending);
+        document.removeEventListener('DOMContentLoaded', renderOnStart);
     }, 1000)
+}
+
+export async function renderOnStart() {
+    const trending = await apiService.getTrendingMovies();
+    refs.movieGallery.insertAdjacentHTML('beforeend', galleryItems(trending.results));
+    totalPages = trending.total_pages;
+    console.log(totalPages)
+    renderPagesList()
 }
 
 //  Пока не доделано. Для доделки и переделки нужен пагинатор
 
-document.addEventListener('DOMContentLoaded', renderTrending);
+document.addEventListener('DOMContentLoaded', renderOnStart);
 
 removeAutoLoad();
 
