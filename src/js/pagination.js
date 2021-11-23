@@ -1,5 +1,6 @@
 import markupMovie from "../templates/card.hbs";
 import { apiService, refs } from "../js/variables.global";
+import { renderTrending } from './main-page-rendering';
 
 // export default refs = {
 //   paginationList: document.querySelector('.pagination-box'),
@@ -48,13 +49,15 @@ refs.nextBtn.addEventListener('click', onNextBtnClick);
 
 function onNextBtnClick(e) {
   e.preventDefault();
-  renderTrending()
   if (currentPage !== totalPages) {
     currentPage += 1;
+    apiService.page = currentPage;
+    refs.movieGallery.innerHTML = '';
+    renderTrending();
   }
- 
+  
   refs.pageList.innerHTML = '';
-  apiServise.setPage(currentPage);
+  // apiServise.setPage(currentPage);
   scrollPage();
 }
 
