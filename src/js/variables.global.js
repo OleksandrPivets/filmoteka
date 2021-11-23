@@ -30,4 +30,13 @@ export const refs = {
     header: document.getElementById('header'),
     headerFormBox: document.getElementById('form-box'),
     headerButtonBox: document.getElementById('button-box'),
+
+    // пагинация
+    paginationList: document.querySelector('.pagination-box'),
+    pageList: document.querySelector('.pages'),
+    lastBtn: document.getElementById('last-page'),
+    prevBtn: document.getElementById('button-prev'),
+    nextBtn: document.getElementById('button-next'),
+    firstPage: document.querySelector('.first'),
+    lastPage: document.querySelector('.last'),
 }

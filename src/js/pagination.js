@@ -1,17 +1,17 @@
-import ApiService from "./apiService";
-import markupMovie from "../templates/movie-card.hbs"
+import markupMovie from "../templates/card.hbs";
+import { apiService, refs } from "../js/variables.global";
 
-export default refs = {
-  paginationList: document.querySelector('.pagination-box'),
-  pageList: document.querySelector('.pages'),
-  lastBtn: document.getElementById('last-page'),
-  prevBtn: document.getElementById('button-prev'),
-  nextBtn: document.getElementById('button-next'),
-  firstPage: document.querySelector('.first'),
-  lastPage: document.querySelector('.last'),
-}
+// export default refs = {
+//   paginationList: document.querySelector('.pagination-box'),
+//   pageList: document.querySelector('.pages'),
+//   lastBtn: document.getElementById('last-page'),
+//   prevBtn: document.getElementById('button-prev'),
+//   nextBtn: document.getElementById('button-next'),
+//   firstPage: document.querySelector('.first'),
+//   lastPage: document.querySelector('.last'),
+// }
 
-const apiService = new ApiService();
+
 let currentPage = 1;
 let totalPages;
 const pageRange = 2;
@@ -30,6 +30,43 @@ function renderPagesList() {
   }
 }
 
-refs.paginationList.addEventListener('click', onBtnClick);
-refs.prevBtn.addEventListener('click', onPrevBtnClick);
+async function getMoviesCount() {
+
+  const movies = await apiService.getTrendingMovies();
+  
+  console.log('movies: ' + JSON.stringify(movies.page));
+  return movies.length;
+}
+
+getMoviesCount()
+
+
+
+// refs.paginationList.addEventListener('click', onBtnClick);
+// refs.prevBtn.addEventListener('click', onPrevBtnClick);
 refs.nextBtn.addEventListener('click', onNextBtnClick);
+
+function onNextBtnClick(e) {
+  e.preventDefault();
+  renderTrending()
+  if (currentPage !== totalPages) {
+    currentPage += 1;
+  }
+ 
+  refs.pageList.innerHTML = '';
+  apiServise.setPage(currentPage);
+  scrollPage();
+}
+
+function scrollPage() {
+  try {
+    setTimeout(() => {
+      window.scrollTo({
+        block: 'end',
+        behavior: 'smooth',
+      });
+    }, 500);
+  } catch (error) {
+    console.log(error);
+  }
+}
