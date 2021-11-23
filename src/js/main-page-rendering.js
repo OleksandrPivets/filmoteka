@@ -3,7 +3,9 @@ import genres from '../db/genres.json';
 // import galleryItems from '../templates/movie-card.hbs'; // << уже не нужно
 import galleryItems from '../templates/card.hbs';
 import delayIndicator from './delayIndicator';
+import { renderPagesList } from './pagination'
 
+export let totalPages;
 
 async function renderTrending() {
   const trending = await apiService.getTrendingMovies();
@@ -13,6 +15,8 @@ async function renderTrending() {
   delayIndicator(onLoadGallery, "film__link", 'film__img', false);
   console.log(trending);
   console.log(genres);
+  renderPagesList();
+
 }
 
 async function renderSearchResults(searchQuery) {
@@ -32,9 +36,9 @@ async function renderSearchResults(searchQuery) {
 
 export const renderHome = (event) => {
   event.preventDefault();
+  apiService.resetPage();
   refs.movieGallery.innerHTML = '';
-  renderTrending();
-    
+  renderTrending();    
 }
 
 const search = (event) => {
@@ -54,13 +58,21 @@ const search = (event) => {
 
 const removeAutoLoad = () => {
   setTimeout(() => {
-    document.removeEventListener('DOMContentLoaded', renderTrending);
-  }, 1000)
+        document.removeEventListener('DOMContentLoaded', renderOnStart);
+    }, 1000)
+}
+
+export async function renderOnStart() {
+    const trending = await apiService.getTrendingMovies();
+    refs.movieGallery.insertAdjacentHTML('beforeend', galleryItems(trending.results));
+    totalPages = trending.total_pages;
+    console.log(totalPages)
+    renderPagesList()
 }
 
 //  Пока не доделано. Для доделки и переделки нужен пагинатор
 
-document.addEventListener('DOMContentLoaded', renderTrending);
+document.addEventListener('DOMContentLoaded', renderOnStart);
 
 removeAutoLoad();
 
