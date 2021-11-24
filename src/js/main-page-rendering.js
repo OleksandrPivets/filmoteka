@@ -1,56 +1,54 @@
 import { apiService, refs } from './variables.global';
 import genres from '../db/genres.json';
 // import galleryItems from '../templates/movie-card.hbs'; // << уже не нужно
-import galleryItems from '../templates/card.hbs'
-
+import galleryItems from '../templates/card.hbs';
+import Notiflix from 'notiflix';
 
 async function renderTrending() {
-    const trending = await apiService.getTrendingMovies();
-    refs.movieGallery.insertAdjacentHTML('beforeend', galleryItems(trending.results));
-    console.log(trending);
-    console.log(genres);
-    
+  const trending = await apiService.getTrendingMovies();
+  refs.movieGallery.insertAdjacentHTML('beforeend', galleryItems(trending.results));
+  console.log(trending);
+  console.log(genres);
 }
 
 async function renderSearchResults(searchQuery) {
-    apiService.searchQuery = searchQuery;
-    if (apiService.searchQuery === '') {
-        return;
-    }
-    const searchResults = await apiService.searchMovie();
-    const movies = searchResults.results;
-    refs.movieGallery.insertAdjacentHTML('beforeend', galleryItems(movies));
-    console.log(searchResults);
-    console.log(movies);
+  apiService.searchQuery = searchQuery.trim();
+  if (apiService.searchQuery === '') {
+    return Notiflix.Notify.warning('The field is empty! Enter the title of the movie.'); //оповещение о пустом инпуте
+  }
+  const searchResults = await apiService.searchMovie();
+  const movies = searchResults.results;
+  refs.movieGallery.insertAdjacentHTML('beforeend', galleryItems(movies));
+  console.log(searchResults);
+  console.log(movies);
 }
 
-export const renderHome = (event) => {
+export const renderHome = event => {
+  event.preventDefault();
+  refs.movieGallery.innerHTML = '';
+  renderTrending();
+};
+
+const search = event => {
+  let submitter = event.submitter;
+  let searchQuery = refs.searchInput.value;
+
+  if (submitter) {
     event.preventDefault();
+    apiService.resetPage();
     refs.movieGallery.innerHTML = '';
-    renderTrending();
-    
-}
-
-const search = (event) => {
-    let submitter = event.submitter;
-    let searchQuery = refs.searchInput.value;
-
-    if (submitter) {
-        event.preventDefault();
-        apiService.resetPage();
-        refs.movieGallery.innerHTML = '';
-        if (searchQuery === '') {
-            return
-        }
-        renderSearchResults(searchQuery);
+    if (searchQuery === '') {
+      return;
     }
+    renderSearchResults(searchQuery);
+  }
 };
 
 const removeAutoLoad = () => {
-    setTimeout(() => {
-        document.removeEventListener('DOMContentLoaded', renderTrending);
-    }, 1000)
-}
+  setTimeout(() => {
+    document.removeEventListener('DOMContentLoaded', renderTrending);
+  }, 1000);
+};
 
 //  Пока не доделано. Для доделки и переделки нужен пагинатор
 
@@ -60,3 +58,27 @@ removeAutoLoad();
 
 refs.searchForm.addEventListener('submit', search);
 // refs.homeBtn.forEach(btn => btn.addEventListener('click', renderHome));
+
+//Настройка стилей оповещений
+Notiflix.Notify.init({
+  width: '393px',
+  position: 'center-top',
+  distance: '155px',
+
+  ID: 'NotiflixNotify',
+  className: 'notiflix-notify',
+  fontFamily: 'Roboto',
+  fontSize: '14px',
+  useIcon: false,
+  fontAwesomeIconSize: '0px',
+
+  warning: {
+    background: 'none',
+    textColor: '#FF001B',
+    textShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)',
+    childClassName: 'notiflix-notify-warning',
+    notiflixIconColor: '',
+    fontAwesomeIconColor: '',
+    backOverlayColor: '',
+  },
+});
