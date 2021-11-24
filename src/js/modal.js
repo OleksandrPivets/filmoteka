@@ -1,5 +1,6 @@
 import { apiService, refs } from './variables.global';
 import movieInfoTmp from '../templates/movie-info.hbs';
+import delayIndicator from './delayIndicator';
 import {
   getQueue,
   getWatched,
@@ -62,7 +63,10 @@ async function renderMovieInfo(id) {
   console.log(movieInfo);
   modalRefs.movieImg.src = `${movieInfo.poster_path}`;
   modalRefs.movieInfo.insertAdjacentHTML('beforeend', movieInfoTmp(movieInfo));
-
+  // Добавляем индикатор задержки загрузки
+  const onLoadObj = document.querySelectorAll('.lightbox__content');
+  delayIndicator(onLoadObj,'classToInsertCodeAfter', 'movie-img', true);
+  
   //Adding EventListeners
   modalRefs.button_watched = document.querySelector('.button-watched');
   modalRefs.button_queue = document.querySelector('.button-queue');
