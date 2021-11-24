@@ -13,6 +13,7 @@ async function renderTrending() {
   // Добавляем индикатор задержки загрузки
   const onLoadGallery = document.querySelectorAll('.film__card');
   delayIndicator(onLoadGallery, "film__link", 'film__img', false);
+
   console.log(trending);
   console.log(genres);
   renderPagesList();
@@ -30,6 +31,7 @@ async function renderSearchResults(searchQuery) {
   // Добавляем индикатор задержки загрузки
   const onLoadGallery = document.querySelectorAll('.film__card');
   delayIndicator(onLoadGallery, "film__link", 'film__img', false);
+  
   console.log(searchResults);
   console.log(movies);
 }

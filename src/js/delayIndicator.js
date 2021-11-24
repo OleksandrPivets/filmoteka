@@ -1,7 +1,11 @@
 import beautiSpinner from '../templates/spiner';
 
+// // Добавляем индикатор задержки загрузки
+// const onLoadObj = document.querySelectorAll('.objClassForInsertIndicator');
+// delayIndicator(onLoadObj,'classToInsertCodeAfter', 'classLoadableObj', false);
+
 // Индикатор задержки загрузки
-export default function delayIndicator(array, classConteiner, classImg, permit) {
+export default function delayIndicator(array, classConteiner, classLoadObj, permit) {
 
   array.forEach(element => {
     // если разметки нет то
@@ -11,16 +15,16 @@ export default function delayIndicator(array, classConteiner, classImg, permit) 
       cardItem.insertAdjacentHTML('afterbegin', beautiSpinner());
       permit = true;
     };
-    // анализируем код и
+    // находим разметку индикатора и
     const delayIndicator = element.getElementsByClassName('delay-indicator')[0];
-    const imgPhoto = element.getElementsByClassName(classImg)[0];
+    const loadableObj = element.getElementsByClassName(classLoadObj)[0];
 
-    if (permit) {
+    if (permit) { // если разрешено
       delayIndicator.classList.remove('is-hidden'); // показываем индикатор
-      imgPhoto.onload = function () { // ловим событие окончания загрузки
+      loadableObj.onload = function () { // ловим событие окончания загрузки
         delayIndicator.classList.add('is-hidden'); // посмотрели и хватит
       };
-      permit = false; // Все для вас на одн раз (с)Борис Зубков, Евгений Муслин "Непрочный, непрочный, непрочный мир..."
+      permit = false; // Все-для-вас-на-одн-раз (с)Борис Зубков, Евгений Муслин "Непрочный, непрочный, непрочный мир..." http://lib.ru/RUFANT/MUSLIN/42-09.txt
     };
   });
 };
