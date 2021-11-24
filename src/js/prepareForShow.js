@@ -2,13 +2,13 @@
 export default function prepareForShow(array) {
   if (array.length === 0) {
     // ansver = false; // если ничего не пришло в ответе
-    return
-  };
-  if (array.genres.length === 0) { 
+    return;
+  }
+  if (array.genres.length === 0) {
     array.genres[0] = 'Unknown'; // если нет данных
-  }  
+  }
   if (array.genres.length > 3) {
-    array.genres = array.genres.slice(0, 2);  // делаем обрезание ;-))
+    array.genres = array.genres.slice(0, 2); // делаем обрезание ;-))
     array.genres[2] = 'Other';
   }
   array.genreShow = array.genres.join(', '); // дорисовываем запятые
@@ -16,4 +16,4 @@ export default function prepareForShow(array) {
 
   // ansver = true;
   return array;
-};
+}
