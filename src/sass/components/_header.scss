@@ -54,7 +54,6 @@ max-width: 1023px;
     }
   }
 &-logo__item{
-  margin-top: 46px;
   @media screen and (min-width: 768px) {
     margin-right: 10px;
   }
@@ -63,6 +62,7 @@ max-width: 1023px;
 .nav{
   display: flex;
   justify-content: space-between;
+  align-items: baseline;
  &-logo-title{
     display: none;
       @media screen and (min-width: 768px) {
@@ -79,7 +79,6 @@ max-width: 1023px;
       display: flex;
     }
     &-list__item{
-      margin-top: 58px;
       position: relative;
     }
     &-list__link{
