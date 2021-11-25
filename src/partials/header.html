@@ -4,7 +4,7 @@
       <div data-home class="nav-logo" id="logo">
         <a href="./index.html" class="header-logo__icon">
           <svg class="header-logo__item" width="24px" height="24px">
-            <use class="" href="./images/sprite-header.svg#icon-logo"></use>
+            <use class="" href="./images/sprite.svg#icon-logo"></use>
           </svg>
           <span class="nav-logo-title">Filmoteka </span>
         </a>
@@ -23,10 +23,16 @@
     <div class="form-box">
       <form id="form-search" class="form-search">
         <div class="formbox" id="form-box">
-          <input type="text" class="search-input" placeholder="Поиск фильмов" />
+          <input
+            type="text"
+            class="search-input"
+            placeholder="Поиск фильмов"
+            minlength="2"
+            required
+          />
           <button class="search-button" type="submit">
             <svg class="search-icon" width="12px" height="12px">
-              <use class="" href="./images/sprite-header.svg#icon-search"></use>
+              <use class="" href="./images/sprite.svg#icon-search"></use>
             </svg>
           </button>
         </div>
