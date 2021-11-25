@@ -3,9 +3,12 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
     <title>Filmoteka</title>
     <link
       rel="stylesheet"
@@ -14,17 +17,17 @@
       crossorigin="anonymous"
     />
     <link rel="icon" href="./favicon.ico" type="image" />
-    <link rel="stylesheet" href="./sass/main.scss">
   </head>
 
-<body class="light-theme">
-  <!-- Так добавляются фрагменты в главные HTML-файлы страниц. -->
-  <include src="./partials/header.html"></include>
-  <include src="./partials/gallery.html"></include>
-  <include src="./partials/footer.html"></include>
-  <include src="./partials/modal.html"></include>
+  <body class="light-theme">
+    <!-- Так добавляются фрагменты в главные HTML-файлы страниц. -->
+    <include src="./partials/header.html"></include>
+    <include src="./partials/gallery.html"></include>
+    <include src="./partials/pagination.html"></include>
+    <include src="./partials/footer.html"></include>
+    <include src="./partials/modal.html"></include>
 
-  <!-- Скрипт идёт последним в разметке. В нём уже подключен главный SASS-файл. -->
-  <script src="./index.js"></script>
-</body>
+    <!-- Скрипт идёт последним в разметке. В нём уже подключен главный SASS-файл. -->
+    <script src="./index.js"></script>
+  </body>
 </html>

@@ -4,22 +4,6 @@ ul  {
   padding: 0;
 }
 
-body {
-  &.light-theme {
-    background-color: var(--main-background-light-color);
-    .film__title {
-      color: var(--main-text-light-color);
-    }
-  }
-
-  &.dark-theme {
-    background-color: var(--main-background-dark-color);
-    .film__title {
-      color: var(--main-text-dark-color);
-    }
-  }
-}
-
 .section {
   padding: 20px;
   margin: 0 auto;
@@ -75,6 +59,7 @@ body {
 
 .film {
   &__card {
+    position: relative;
     margin-bottom: 20px;
     border-radius: 5px;
     @media screen and (min-width: $mobile) and (max-width: $tablet - 1px) {
@@ -161,11 +146,6 @@ body {
     align-items: center;
     text-align: center;
     text-transform: uppercase;
-
-    // &.is-hidden {
-    //   opacity: 0;
-    //   // display: none;
-    // }
   }
 }
 

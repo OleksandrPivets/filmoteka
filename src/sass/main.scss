@@ -1,10 +1,16 @@
 // Стили для файла с примером HTML-фрагмента
-@import './variables';
 @import './base/common';
+@import './variables';
 @import './components/header';
 @import './components/library-header';
 @import './movie-card';
 @import './footer';
 @import './gallery';
 @import './components/modal';
+
 @import './components/theme';
+
+@import './components/spiner';
+@import './components/pagination';
+@import './base/hidden';
+
