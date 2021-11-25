@@ -4,21 +4,19 @@ import genres from '../db/genres.json';
 import galleryItems from '../templates/card.hbs';
 import Notiflix from 'notiflix';
 import delayIndicator from './delayIndicator';
-import { renderPagesList } from './pagination'
+import { renderPagesList,  hideFirstLastBtn, isHideBtn, activeBtn  } from './pagination'
 
 export let totalPages;
 
-async function renderTrending() {
+export async function renderTrending() {
   const trending = await apiService.getTrendingMovies();
   refs.movieGallery.insertAdjacentHTML('beforeend', galleryItems(trending.results));
   console.log(trending);
   console.log(genres);
   renderPagesList();
-}
-
-
-  
-
+  hideFirstLastBtn();
+  isHideBtn();
+  activeBtn()
 }
 
 async function renderSearchResults(searchQuery) {
@@ -30,10 +28,13 @@ async function renderSearchResults(searchQuery) {
   //оповещение о пустом инпуте
   const searchResults = await apiService.searchMovie();
   const movies = searchResults.results;
+ 
   refs.movieGallery.insertAdjacentHTML('beforeend', galleryItems(movies));
   // Добавляем индикатор задержки загрузки
   const onLoadGallery = document.querySelectorAll('.film__card');
   delayIndicator(onLoadGallery, "film__link", 'film__img', false);
+  console.log(searchResults);
+  console.log(movies);
   renderPagesList();
 }
 
@@ -41,8 +42,11 @@ async function renderSearchResults(searchQuery) {
 export const renderHome = (event) => {
   event.preventDefault();
   apiService.resetPage();
+  
   refs.movieGallery.innerHTML = '';
-  renderTrending();    
+  refs.pageList.innerHTML = '';
+  renderTrending()
+  activeBtn()
 }
 
 const search = (event) => {
@@ -71,10 +75,15 @@ export async function renderOnStart() {
     const trending = await apiService.getTrendingMovies();
     refs.movieGallery.insertAdjacentHTML('beforeend', galleryItems(trending.results));
     totalPages = trending.total_pages;
+    refs.lastBtn.textContent = totalPages;
     console.log(totalPages)
-    renderPagesList()
+    
+    renderPagesList();
+    hideFirstLastBtn();
+    isHideBtn();
+    activeBtn();
     const onLoadGallery = document.querySelectorAll('.film__card');
-  delayIndicator(onLoadGallery, "film__link", 'film__img', false);
+    delayIndicator(onLoadGallery, "film__link", 'film__img', false);
 }
 
 //  Пока не доделано. Для доделки и переделки нужен пагинатор
