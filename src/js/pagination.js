@@ -97,8 +97,7 @@ let pagesItem = refs.pageList.querySelectorAll('button');
     if (Number(pagesItem[i].textContent) === currentPage) {
       pagesItem[i].classList.add('active-btn');
     }
-    if (Number(pagesItem[i].textContent) !== currentPage) {
-      if (pagesItem[i].classList.contains('active-btn')) {
+    if (Number(pagesItem[i].textContent) !== currentPage && pagesItem[i].classList.contains('active-btn')) {
         pagesItem[i].classList.remove('active-btn');
       }
     }
