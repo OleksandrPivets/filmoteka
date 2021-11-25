@@ -3,33 +3,49 @@ import genres from '../db/genres.json';
 // import galleryItems from '../templates/movie-card.hbs'; // << уже не нужно
 import galleryItems from '../templates/card.hbs';
 import Notiflix from 'notiflix';
+import delayIndicator from './delayIndicator';
+import { renderPagesList } from './pagination'
+
+export let totalPages;
 
 async function renderTrending() {
   const trending = await apiService.getTrendingMovies();
   refs.movieGallery.insertAdjacentHTML('beforeend', galleryItems(trending.results));
   console.log(trending);
   console.log(genres);
+  renderPagesList();
+}
+
+
+  
+
 }
 
 async function renderSearchResults(searchQuery) {
-  apiService.searchQuery = searchQuery.trim();
+  apiService.searchQuery = searchQuery;
+ apiService.searchQuery = searchQuery.trim();
   if (apiService.searchQuery === '') {
-    return Notiflix.Notify.warning('The field is empty! Enter the title of the movie.'); //оповещение о пустом инпуте
+    return Notiflix.Notify.warning('The field is empty! Enter the title of the movie.');
   }
+  //оповещение о пустом инпуте
   const searchResults = await apiService.searchMovie();
   const movies = searchResults.results;
   refs.movieGallery.insertAdjacentHTML('beforeend', galleryItems(movies));
-  console.log(searchResults);
-  console.log(movies);
+  // Добавляем индикатор задержки загрузки
+  const onLoadGallery = document.querySelectorAll('.film__card');
+  delayIndicator(onLoadGallery, "film__link", 'film__img', false);
+  renderPagesList();
 }
 
-export const renderHome = event => {
-  event.preventDefault();
-  refs.movieGallery.innerHTML = '';
-  renderTrending();
-};
 
-const search = event => {
+export const renderHome = (event) => {
+  event.preventDefault();
+  apiService.resetPage();
+  refs.movieGallery.innerHTML = '';
+  renderTrending();    
+}
+
+const search = (event) => {
   let submitter = event.submitter;
   let searchQuery = refs.searchInput.value;
 
@@ -50,9 +66,20 @@ const removeAutoLoad = () => {
   }, 1000);
 };
 
+
+export async function renderOnStart() {
+    const trending = await apiService.getTrendingMovies();
+    refs.movieGallery.insertAdjacentHTML('beforeend', galleryItems(trending.results));
+    totalPages = trending.total_pages;
+    console.log(totalPages)
+    renderPagesList()
+    const onLoadGallery = document.querySelectorAll('.film__card');
+  delayIndicator(onLoadGallery, "film__link", 'film__img', false);
+}
+
 //  Пока не доделано. Для доделки и переделки нужен пагинатор
 
-document.addEventListener('DOMContentLoaded', renderTrending);
+document.addEventListener('DOMContentLoaded', renderOnStart);
 
 removeAutoLoad();
 

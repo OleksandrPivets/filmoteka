@@ -1,5 +1,21 @@
 body {
   font-family: Roboto, sans-serif;
+
+  &.light-theme {
+    background-color: var(--main-background-light-color);
+
+    .film__title {
+      color: var(--main-text-light-color);
+    }
+  }
+
+  &.dark-theme {
+    background-color: var(--main-background-dark-color);
+
+    .film__title {
+      color: var(--main-text-dark-color);
+    }
+  }
 }
 
 .section {
@@ -46,8 +62,4 @@ a {
 }
 ul {
   padding: 0;
-}
-
-.is-hidden {
-  display: none;
 }
