@@ -11,6 +11,9 @@ export let totalPages;
 export async function renderTrending() {
   const trending = await apiService.getTrendingMovies();
   refs.movieGallery.insertAdjacentHTML('beforeend', galleryItems(trending.results));
+  // Добавляем индикатор задержки загрузки
+  const onLoadGallery = document.querySelectorAll('.film__card');
+  delayIndicator(onLoadGallery, "film__link", 'film__img', false);
   console.log(trending);
   console.log(genres);
   renderPagesList(apiService.page);
