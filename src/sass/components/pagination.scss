@@ -18,7 +18,7 @@
   font-weight: 500;
   font-size: 12px;
   line-height: 16px;
-  color: var(--black);
+  color: var(--main-background-dark-color);
   cursor: pointer;
 
   transition: all var(--animation-duration) ease;
@@ -52,31 +52,23 @@
   }
 }
 
-.next-btn {
-  background-image: url();
-  background-size: cover;
-  background-position: 2px 2px;
-  background-repeat: no-repeat;
-}
+
+
 .icon {
   display: inline-block;
-  width: 1em;
-  height: 1em;
+  position: relative;
+  top: 2px;
+  width: 15px;
+  height: 15px;
   stroke-width: 0;
   stroke: currentColor;
   fill: currentColor;
 }
-// .prev-btn {
-//   background-image: url(/src/images/circle_left.svg);
-//   background-size: cover;
-//   background-position: 12px 12px;
-//   background-repeat: no-repeat;
-//   transform: matrix(-1, 0, 0, 1, 0, 0);
-// }
+
 
 .active-btn {
   background-color: var(--main-text-genre-color);
-  color: var(--white);
+  color: var(--main-background-light-color);
     &:hover,
     &:focus {
       background-color: var(--main-text-genre-color);
@@ -101,11 +93,4 @@
     display: flex;
   }
 
-  .dots {
-    font-style: normal;
-    font-weight: 500;
-    font-size: 12px;
-    line-height: 16px;
-    color: var(--black);
-  }
 }

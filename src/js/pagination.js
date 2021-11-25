@@ -1,6 +1,6 @@
 import markupMovie from "../templates/card.hbs";
 import { apiService, refs } from "../js/variables.global";
-import { renderTrending, totalPages } from './main-page-rendering';
+import { renderOnStart, totalPages, renderTrending } from './main-page-rendering';
 
 // export default refs = {
 //   paginationList: document.querySelector('.pagination-box'),
@@ -12,17 +12,9 @@ import { renderTrending, totalPages } from './main-page-rendering';
 //   lastPage: document.querySelector('.last'),
 // }
 
-
-
-
 let currentPage = 1;
-// let totalPages;
+
 const pageRange = 2;
-// setTotalPages();
-// async function setTotalPages() {
-//   totalPages = await renderOnStart();
-//   console.log(totalPages);
-// }
 
 async function renderPagesList() {
   const start = currentPage - pageRange;
@@ -38,49 +30,89 @@ async function renderPagesList() {
   }
 }
 
-// async function getMoviesCount() {
 
-//   const movies = await apiService.getTrendingMovies();
-  
-//   console.log('movies: ' + JSON.stringify(movies.page));
-//   return movies.length;
-// }
-
-// getMoviesCount()
-
-
-
-// refs.paginationList.addEventListener('click', onBtnClick);
-// refs.prevBtn.addEventListener('click', onPrevBtnClick);
+refs.paginationList.addEventListener('click', onBtnClick);
+refs.prevBtn.addEventListener('click', onPrevBtnClick);
 refs.nextBtn.addEventListener('click', onNextBtnClick);
 
-function onNextBtnClick(e) {
+function onBtnClick(e) {
+  e.preventDefault();
+  
+  if (e.target.nodeName !== 'BUTTON') {
+    return;
+  }
+
+  refs.movieGallery.innerHTML = '';
+  refs.pageList.innerHTML = '';
+
+  currentPage = Number(e.target.textContent);
+  apiService.page = currentPage;
+  renderOnStart()
+  scrollPage()
+}
+
+function onPrevBtnClick(e) {
+  e.preventDefault();
+ 
+  if (currentPage > 1) {
+    currentPage -= 1;
+    apiService.setPage(currentPage)
+    refs.movieGallery.innerHTML = '';
+    refs.pageList.innerHTML = '';
+    
+    renderOnStart()
+    scrollPage();
+  }
+}
+
+ function onNextBtnClick(e) {
   e.preventDefault();
   if (currentPage !== totalPages) {
     currentPage += 1;
-    apiService.page = currentPage;
+    
+   }
+    
+    apiService.setPage(currentPage) 
+    renderOnStart();
+    scrollPage();
+   
+   refs.pageList.innerHTML = '';
     refs.movieGallery.innerHTML = '';
-    renderTrending();
+}
+function isHideBtn() {
+  if (currentPage === 1) {
+    refs.prevBtn.disabled = true
   }
-  
-  refs.pageList.innerHTML = '';
-  // apiServise.setPage(currentPage);
-  scrollPage();
+  else {refs.prevBtn.disabled = false}
+   if (currentPage === totalPages) {
+    refs.nextBtn.disabled = true
+  }
+  else {refs.nextBtn.disabled = false}
+ }
+function activeBtn() {
+let pagesItem = refs.pageList.querySelectorAll('button');
+  for (let i = 0; i < pagesItem.length; i += 1) {
+    if (Number(pagesItem[i].textContent) === currentPage) {
+      pagesItem[i].classList.add('active-btn');
+    }
+  }
 }
 
+function hideFirstLastBtn() {
+  if (currentPage < 4) { refs.firstPage.hidden = true }
+  else { refs.firstPage.hidden = false };
+  if (currentPage > totalPages - 3) { refs.lastPage.hidden = true }
+  else { refs.lastPage.hidden = false };
+}
+
+
 function scrollPage() {
-  try {
-    setTimeout(() => {
-      window.scrollTo({
-        block: 'end',
-        behavior: 'smooth',
-      });
-    }, 500);
-  } catch (error) {
-    console.log(error);
-  }
+    refs.header.scrollIntoView({
+    behavior: 'smooth',
+    block: 'end',
+  });
 }
 
 export {
-  renderPagesList,
+  renderPagesList, hideFirstLastBtn, isHideBtn, activeBtn
 }
