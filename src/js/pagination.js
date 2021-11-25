@@ -1,6 +1,6 @@
 import markupMovie from "../templates/card.hbs";
 import { apiService, refs } from "../js/variables.global";
-import { renderOnStart, totalPages, renderTrending } from './main-page-rendering';
+import { renderOnStart, totalPages, renderTrending, renderSearchResults, searchQuerySaved } from './main-page-rendering';
 
 // export default refs = {
 //   paginationList: document.querySelector('.pagination-box'),
@@ -50,6 +50,7 @@ function onBtnClick(e) {
   currentPage = Number(e.target.textContent);
   apiService.page = currentPage;
   renderTrending()
+  // renderSearchResults(searchQuerySaved)
   scrollPage()
 }
 

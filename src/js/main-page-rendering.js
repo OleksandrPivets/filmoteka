@@ -7,6 +7,7 @@ import delayIndicator from './delayIndicator';
 import { renderPagesList,  hideFirstLastBtn, isHideBtn, activeBtn  } from './pagination'
 
 export let totalPages;
+export let searchQuerySaved;
 
 export async function renderTrending() {
   const trending = await apiService.getTrendingMovies();
@@ -19,7 +20,7 @@ export async function renderTrending() {
   activeBtn();
 }
 
-async function renderSearchResults(searchQuery) {
+export async function renderSearchResults(searchQuery) {
   apiService.searchQuery = searchQuery;
   apiService.searchQuery = searchQuery.trim();
   if (apiService.searchQuery === '') {
@@ -37,6 +38,7 @@ async function renderSearchResults(searchQuery) {
   console.log(movies);
   if (apiService.page === 1) {
     totalPages = searchResults.total_pages;
+    refs.lastBtn.textContent = totalPages;
   }
   renderPagesList(apiService.page);
   hideFirstLastBtn();
@@ -67,6 +69,7 @@ const search = (event) => {
       return;
     }
     renderSearchResults(searchQuery);
+    searchQuerySaved = searchQuery;
   }
 };
 
