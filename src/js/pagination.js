@@ -16,7 +16,9 @@ let currentPage = 1;
 
 const pageRange = 2;
 
-async function renderPagesList() {
+async function renderPagesList(apiPage) {
+  currentPage = apiPage;
+  refs.pageList.innerHTML = '';
   const start = currentPage - pageRange;
   const end = currentPage + pageRange;
   
@@ -47,7 +49,7 @@ function onBtnClick(e) {
 
   currentPage = Number(e.target.textContent);
   apiService.page = currentPage;
-  renderOnStart()
+  renderTrending()
   scrollPage()
 }
 
@@ -60,7 +62,7 @@ function onPrevBtnClick(e) {
     refs.movieGallery.innerHTML = '';
     refs.pageList.innerHTML = '';
     
-    renderOnStart()
+    renderTrending();
     scrollPage();
   }
 }
@@ -73,7 +75,7 @@ function onPrevBtnClick(e) {
    }
     
     apiService.setPage(currentPage) 
-    renderOnStart();
+    renderTrending();
     scrollPage();
    
    refs.pageList.innerHTML = '';
@@ -94,6 +96,11 @@ let pagesItem = refs.pageList.querySelectorAll('button');
   for (let i = 0; i < pagesItem.length; i += 1) {
     if (Number(pagesItem[i].textContent) === currentPage) {
       pagesItem[i].classList.add('active-btn');
+    }
+    if (Number(pagesItem[i].textContent) !== currentPage) {
+      if (pagesItem[i].classList.contains('active-btn')) {
+        pagesItem[i].classList.remove('active-btn');
+      }
     }
   }
 }

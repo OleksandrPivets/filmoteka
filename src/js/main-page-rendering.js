@@ -13,15 +13,15 @@ export async function renderTrending() {
   refs.movieGallery.insertAdjacentHTML('beforeend', galleryItems(trending.results));
   console.log(trending);
   console.log(genres);
-  renderPagesList();
+  renderPagesList(apiService.page);
   hideFirstLastBtn();
   isHideBtn();
-  activeBtn()
+  activeBtn();
 }
 
 async function renderSearchResults(searchQuery) {
   apiService.searchQuery = searchQuery;
- apiService.searchQuery = searchQuery.trim();
+  apiService.searchQuery = searchQuery.trim();
   if (apiService.searchQuery === '') {
     return Notiflix.Notify.warning('The field is empty! Enter the title of the movie.');
   }
@@ -35,7 +35,13 @@ async function renderSearchResults(searchQuery) {
   delayIndicator(onLoadGallery, "film__link", 'film__img', false);
   console.log(searchResults);
   console.log(movies);
-  renderPagesList();
+  if (apiService.page === 1) {
+    totalPages = searchResults.total_pages;
+  }
+  renderPagesList(apiService.page);
+  hideFirstLastBtn();
+  isHideBtn();
+  activeBtn();
 }
 
 
@@ -78,7 +84,7 @@ export async function renderOnStart() {
     refs.lastBtn.textContent = totalPages;
     console.log(totalPages)
     
-    renderPagesList();
+    renderPagesList(apiService.page);
     hideFirstLastBtn();
     isHideBtn();
     activeBtn();
