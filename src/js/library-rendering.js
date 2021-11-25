@@ -9,18 +9,18 @@ export async function renderWatched() {
   const watchedMovies = await getLibraryMovies(watchedIds);
   refs.movieGallery.innerHTML = '';
   refs.movieGallery.insertAdjacentHTML('beforeend', galleryItems(watchedMovies));
-  console.log(watchedMovies)
+  console.log(watchedMovies);
   // Добавляем индикатор задержки загрузки
   const onLoadGallery = document.querySelectorAll('.film__card');
-  delayIndicator(onLoadGallery, "film__link", 'film__img', false);
+  delayIndicator(onLoadGallery, 'film__link', 'film__img', false);
 
   if (!refs.watchedBtn.classList.contains('active-button')) {
     refs.watchedBtn.classList.add('active-button');
     refs.queueBtn.classList.remove('active-button');
   }
-};
+}
 
-export async function renderQueue(){
+export async function renderQueue() {
   const queueIds = getQueue();
   const queueMovies = await getLibraryMovies(queueIds);
   refs.movieGallery.innerHTML = '';
@@ -28,22 +28,21 @@ export async function renderQueue(){
   console.log(queueMovies);
   // Добавляем индикатор задержки загрузки
   const onLoadGallery = document.querySelectorAll('.film__card');
-  delayIndicator(onLoadGallery, "film__link", 'film__img', false);
+  delayIndicator(onLoadGallery, 'film__link', 'film__img', false);
 
   if (!refs.queueBtn.classList.contains('active-button')) {
     refs.queueBtn.classList.add('active-button');
     refs.watchedBtn.classList.remove('active-button');
   }
-};
+}
 
 async function getLibraryMovies(ids) {
   const movies = await Promise.all(
-    ids.map(async function getWatchedMovie(id) {
+    ids.list.map(async function getWatchedMovie(id) {
       const movie = await apiService.getMovieById(id);
       prepareForShow(movie);
       return movie;
-    })
+    }),
   );
   return movies;
-};
-
+}
