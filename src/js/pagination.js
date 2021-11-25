@@ -102,7 +102,7 @@ let pagesItem = refs.pageList.querySelectorAll('button');
       }
     }
   }
-}
+
 
 function hideFirstLastBtn() {
   if (currentPage < 4) { refs.firstPage.hidden = true }
