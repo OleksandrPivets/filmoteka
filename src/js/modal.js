@@ -1,6 +1,7 @@
 import { apiService, refs } from './variables.global';
 import movieInfoTmp from '../templates/movie-info.hbs';
 import delayIndicator from './delayIndicator';
+import prepareForShow from './prepareForShow';
 import {
   checkIfInQueue,
   checkIfInWatched,
@@ -58,7 +59,8 @@ function onEscKeyPress(event) {
 
 async function renderMovieInfo(id) {
   const movieInfo = await apiService.getMovieById(id);
-  console.log(movieInfo);
+  // console.log(movieInfo);
+  prepareForShow(movieInfo);
   modalRefs.movieImg.src = `${movieInfo.poster_path}`;
   modalRefs.movieInfo.insertAdjacentHTML('beforeend', movieInfoTmp(movieInfo));
   // Добавляем индикатор задержки загрузки
@@ -68,8 +70,8 @@ async function renderMovieInfo(id) {
     delayIndicator(onLoadObj, 'classToInsertCodeAfter', 'movie-img', true);
   }
   //Adding EventListeners
-  modalRefs.button_watched = document.querySelector('.button-watched');
-  modalRefs.button_queue = document.querySelector('.button-queue');
+  modalRefs.button_watched = document.querySelector('.button__watched');
+  modalRefs.button_queue = document.querySelector('.button__queue');
   modalRefs.button_queue.addEventListener('click', addToQueue);
   modalRefs.button_watched.addEventListener('click', addToWatched);
 }
