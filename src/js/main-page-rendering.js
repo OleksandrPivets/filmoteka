@@ -4,7 +4,7 @@ import genres from '../db/genres.json';
 import galleryItems from '../templates/card.hbs';
 import Notiflix from 'notiflix';
 import delayIndicator from './delayIndicator';
-import { renderPagesList,  hideFirstLastBtn, isHideBtn, activeBtn  } from './pagination'
+import { renderPagesList, hideFirstLastBtn, isHideBtn, activeBtn } from './pagination';
 
 export let totalPages;
 export let searchQuerySaved;
@@ -14,7 +14,7 @@ export async function renderTrending() {
   refs.movieGallery.insertAdjacentHTML('beforeend', galleryItems(trending.results));
   // Добавляем индикатор задержки загрузки
   const onLoadGallery = document.querySelectorAll('.film__card');
-  delayIndicator(onLoadGallery, "film__link", 'film__img', false);
+  delayIndicator(onLoadGallery, 'film__link', 'film__img', false);
   console.log(trending);
   console.log(genres);
   renderPagesList(apiService.page);
@@ -32,11 +32,11 @@ export async function renderSearchResults(searchQuery) {
   //оповещение о пустом инпуте
   const searchResults = await apiService.searchMovie();
   const movies = searchResults.results;
- 
+
   refs.movieGallery.insertAdjacentHTML('beforeend', galleryItems(movies));
   // Добавляем индикатор задержки загрузки
   const onLoadGallery = document.querySelectorAll('.film__card');
-  delayIndicator(onLoadGallery, "film__link", 'film__img', false);
+  delayIndicator(onLoadGallery, 'film__link', 'film__img', false);
   console.log(searchResults);
   console.log(movies);
   if (apiService.page === 1) {
@@ -49,18 +49,17 @@ export async function renderSearchResults(searchQuery) {
   activeBtn();
 }
 
-
-export const renderHome = (event) => {
+export const renderHome = event => {
   event.preventDefault();
   apiService.resetPage();
-  
+
   refs.movieGallery.innerHTML = '';
   refs.pageList.innerHTML = '';
-  renderTrending()
-  activeBtn()
-}
+  renderTrending();
+  activeBtn();
+};
 
-const search = (event) => {
+const search = event => {
   let submitter = event.submitter;
   let searchQuery = refs.searchInput.value;
 
@@ -82,20 +81,19 @@ const removeAutoLoad = () => {
   }, 1000);
 };
 
-
 export async function renderOnStart() {
-    const trending = await apiService.getTrendingMovies();
-    refs.movieGallery.insertAdjacentHTML('beforeend', galleryItems(trending.results));
-    totalPages = trending.total_pages;
-    refs.lastBtn.textContent = totalPages;
-    console.log(totalPages)
-    
-    renderPagesList(apiService.page);
-    hideFirstLastBtn();
-    isHideBtn();
-    activeBtn();
-    const onLoadGallery = document.querySelectorAll('.film__card');
-    delayIndicator(onLoadGallery, "film__link", 'film__img', false);
+  const trending = await apiService.getTrendingMovies();
+  refs.movieGallery.insertAdjacentHTML('beforeend', galleryItems(trending.results));
+  totalPages = trending.total_pages;
+  refs.lastBtn.textContent = totalPages;
+  console.log(totalPages);
+
+  renderPagesList(apiService.page);
+  hideFirstLastBtn();
+  isHideBtn();
+  activeBtn();
+  const onLoadGallery = document.querySelectorAll('.film__card');
+  delayIndicator(onLoadGallery, 'film__link', 'film__img', false);
 }
 
 //  Пока не доделано. Для доделки и переделки нужен пагинатор
@@ -109,24 +107,15 @@ refs.searchForm.addEventListener('submit', search);
 
 //Настройка стилей оповещений
 Notiflix.Notify.init({
-  width: '393px',
   position: 'center-top',
-  distance: '155px',
 
-  ID: 'NotiflixNotify',
-  className: 'notiflix-notify',
   fontFamily: 'Roboto',
   fontSize: '14px',
   useIcon: false,
-  fontAwesomeIconSize: '0px',
 
   warning: {
     background: 'none',
     textColor: '#FF001B',
     textShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)',
-    childClassName: 'notiflix-notify-warning',
-    notiflixIconColor: '',
-    fontAwesomeIconColor: '',
-    backOverlayColor: '',
   },
 });
