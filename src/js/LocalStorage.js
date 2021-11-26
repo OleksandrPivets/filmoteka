@@ -8,11 +8,11 @@ function getWatched(page, limit) {
 
 //function for checking if value is in queue or watched lists in local storage
 function checkIfInQueue(id) {
-  const queue = getQueue().list;
+  const queue = getAllFromList('queue');
   return queue.includes(parseInt(id));
 }
 function checkIfInWatched(id) {
-  const watched = getWatched().list;
+  const watched = getAllFromList('watched');
   return watched.includes(parseInt(id));
 }
 
@@ -62,6 +62,11 @@ function getFromList(listName, page = 1, limit = 4) {
       pages,
     };
   }
+  return [];
+}
+function getAllFromList(listName) {
+  let list = JSON.parse(localStorage.getItem(`${listName}`));
+  if (list) return list;
   return [];
 }
 export {
