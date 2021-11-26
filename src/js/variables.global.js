@@ -41,4 +41,6 @@ export const refs = {
 
     watchedBtn: document.querySelector('[data-watched]'),
     queueBtn: document.querySelector('[data-queue]'),
+    btnFooterEl: document.querySelector('.footer__link'),
+    footerBackdropEl: document.querySelector('#footer-backdrop'),
 }
