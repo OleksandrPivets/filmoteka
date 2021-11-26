@@ -43,15 +43,19 @@ function onBtnClick(e) {
   if (e.target.nodeName !== 'BUTTON') {
     return;
   }
-
+ scrollPage()
   refs.movieGallery.innerHTML = '';
   refs.pageList.innerHTML = '';
 
   currentPage = Number(e.target.textContent);
-  apiService.page = currentPage;
-  renderTrending()
-  // renderSearchResults(searchQuerySaved)
-  scrollPage()
+  apiService.setPage(currentPage);
+
+  if (apiService.query) {
+    renderSearchResults(searchQuerySaved);
+  }
+  else {
+    
+  renderTrending()}
 }
 
 function onPrevBtnClick(e) {
@@ -63,24 +67,35 @@ function onPrevBtnClick(e) {
     refs.movieGallery.innerHTML = '';
     refs.pageList.innerHTML = '';
     
-    renderTrending();
+    
     scrollPage();
   }
+  if (apiService.query) {
+    renderSearchResults(searchQuerySaved);
+  }
+  else {
+    
+  renderTrending()}
 }
 
  function onNextBtnClick(e) {
-  e.preventDefault();
+   e.preventDefault();
+   
   if (currentPage !== totalPages) {
     currentPage += 1;
     
    }
-    
-    apiService.setPage(currentPage) 
-    renderTrending();
     scrollPage();
-   
-   refs.pageList.innerHTML = '';
     refs.movieGallery.innerHTML = '';
+    refs.pageList.innerHTML = '';
+    apiService.setPage(currentPage) 
+   if (apiService.query) {
+    renderSearchResults(searchQuerySaved);
+  }
+  else {
+    
+  renderTrending()}
+   
 }
 function isHideBtn() {
   if (currentPage === 1) {
