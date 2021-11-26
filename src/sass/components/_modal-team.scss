@@ -1,0 +1,107 @@
+.list{
+    list-style: none;
+  }
+  .team {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      border-radius: 20px;
+      transform: translate(-50%, -50%);
+      padding: 20px;
+      width: 251px;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      background-color: #767575;
+    
+      @media screen and(min-width:768px) {
+        width: 600px;
+      }
+    
+      @media screen and(min-width:1024px) {
+        width: 800px;
+      }
+    }
+    
+    .team__card {
+      margin: 10px;
+      position: relative;
+      text-align: center;
+      flex-basis: calc((100% - 60px) / 2);
+    
+      @media screen and(min-width:768px) {
+        flex-basis: calc((100% - 90px) / 4);
+      }
+    
+      @media screen and(min-width:1024px) {
+        flex-basis: calc((100% - 120px) / 4);
+      }
+    }
+    
+    .img-wrapper {
+      display: flex;
+      justify-content: center;
+      border-radius: 50px;
+    }
+    
+    .team__img {
+      border-radius: 50%;
+  width: 80px;
+  height: 80px;
+    }
+    
+    .team__git-link {
+      display: flex;
+      position: absolute;
+      bottom: 27px;
+      right: 0px;
+      width: 14px;
+      height: 14px;
+    
+      transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    
+      &:hover,
+      &:focus {
+        transform: scale(1.5);
+      }
+    
+      @media screen and(min-width:768px) {
+        top: 95px;
+        right: 0px;
+        width: 24px;
+        height: 24px;
+      }
+    
+      @media screen and(min-width:1024px) {
+        top: 115px;
+        right: 15px;
+      }
+    }
+    
+    .team__position {
+      color: #0fa6e7;
+    }
+    
+    .team__name,
+    .team__position {
+    margin: 0;
+      font-size: 12px;;
+    
+      @media screen and(min-width:768px) {
+        font-size: 18px;
+        font-weight: 500;
+      }
+    
+      @media screen and(min-width:1024px) {
+        font-size: 24px;
+      }
+    }
+    
+    #footer-backdrop {
+      transition: opacity 500ms cubic-bezier(0.4, 0, 0.2, 1), visibility 500ms cubic-bezier(0.4, 0, 0.2, 1), transform 500ms cubic-bezier(0.4, 0, 0.2, 1);
+      transform: scale(1);
+    }
+    
+    #footer-backdrop.is-hidden {
+      transform: scale(1.1);
+    }

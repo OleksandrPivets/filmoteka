@@ -3,3 +3,4 @@ import './js/main-page-rendering';
 import './js/header';
 import './js/modal';
 import './js/pagination';
+import './js/modal-team';
