@@ -66,7 +66,7 @@ async function renderMovieInfo(id) {
   modalRefs.movieInfo.insertAdjacentHTML('beforeend', movieInfoTmp(movieInfo));
 
   // Добавляем индикатор задержки загрузки
-  if (movieInfo.poster_path.substr(-4) != 'null') {
+  if (movieInfo.poster_path) {
     // якщо нема постера - дзуськи!
     const onLoadObj = document.querySelectorAll('.lightbox__content');
     delayIndicator(onLoadObj, 'classToInsertCodeAfter', 'movie-img', true);
