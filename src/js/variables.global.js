@@ -21,26 +21,26 @@ export const breakpoints = { // it, as is
 
 //  Ниже ссылки на обьекты DOM-дерева 
 export const refs = {
-    navList: document.querySelector('[data-navigation]'),
-    homeBtn: document.querySelectorAll('[data-home]'),                     //  Просьба добавить эти два атрибута на кнопки в хедере
-    libraryBtn: document.querySelector('[data-library]'),               //  Просьба добавить эти два атрибута на кнопки в хедере
-    movieGallery: document.querySelector('[data-movie-gallery]'),       //  Этот атрибут повесить на галерею
-    searchForm: document.querySelector('#form-search'),
-    searchInput: document.querySelector('.search-input'),
-    header: document.getElementById('header'),
-    headerFormBox: document.getElementById('form-box'),
-    headerButtonBox: document.getElementById('button-box'),
+  navList: document.querySelector('[data-navigation]'),
+  homeBtn: document.querySelectorAll('[data-home]'),                     //  Просьба добавить эти два атрибута на кнопки в хедере
+  libraryBtn: document.querySelector('[data-library]'),               //  Просьба добавить эти два атрибута на кнопки в хедере
+  movieGallery: document.querySelector('[data-movie-gallery]'),       //  Этот атрибут повесить на галерею
+  searchForm: document.querySelector('#form-search'),
+  searchInput: document.querySelector('.search-input'),
+  header: document.getElementById('header'),
+  headerFormBox: document.getElementById('form-box'),
+  headerButtonBox: document.getElementById('button-box'),
 
-    paginationList: document.querySelector('.pagination-box'),
-    pageList: document.querySelector('.pages'),
-    lastBtn: document.getElementById('last-page'),
-    prevBtn: document.getElementById('button-prev'),
-    nextBtn: document.getElementById('button-next'),
-    firstPage: document.querySelector('.first'),
-    lastPage: document.querySelector('.last'),
+  paginationList: document.querySelector('.pagination-box'),
+  pageList: document.querySelector('.pages'),
+  lastBtn: document.getElementById('last-page'),
+  prevBtn: document.getElementById('button-prev'),
+  nextBtn: document.getElementById('button-next'),
+  firstPage: document.querySelector('.first'),
+  lastPage: document.querySelector('.last'),
 
-    watchedBtn: document.querySelector('[data-watched]'),
-    queueBtn: document.querySelector('[data-queue]'),
-    btnFooterEl: document.querySelector('.footer__link'),
-    footerBackdropEl: document.querySelector('#footer-backdrop'),
+  watchedBtn: document.querySelector('[data-watched]'),
+  queueBtn: document.querySelector('[data-queue]'),
+  btnFooterEl: document.querySelector('.footer__link'),
+  footerBackdropEl: document.querySelector('#footer-backdrop'),
 }
