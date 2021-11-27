@@ -33,11 +33,6 @@ function onImageClick(event) {
   event.preventDefault();
   window.addEventListener('keydown', onEscKeyPress);
   modalRefs.lightboxEl.classList.add('is-open');
-
-  const breakScrol = refs.forBreakScrol;
-  breakScrol.style.overflov = "hidden";
-  // console.log(breakScrol)
-
   renderMovieInfo(movieId);
 }
 
@@ -69,14 +64,12 @@ async function renderMovieInfo(id) {
   prepareForShow(movieInfo);
   modalRefs.movieImg.src = `${movieInfo.poster_path}`;
   modalRefs.movieInfo.insertAdjacentHTML('beforeend', movieInfoTmp(movieInfo));
-
   // Добавляем индикатор задержки загрузки
   if (movieInfo.poster_path) {
     // якщо нема постера - дзуськи!
     const onLoadObj = document.querySelectorAll('.lightbox__content');
     delayIndicator(onLoadObj, 'classToInsertCodeAfter', 'movie-img', true);
   }
-
   //Adding EventListeners
   modalRefs.button_watched = document.querySelector('.button__watched');
   modalRefs.button_queue = document.querySelector('.button__queue');

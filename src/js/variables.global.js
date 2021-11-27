@@ -43,6 +43,4 @@ export const refs = {
   queueBtn: document.querySelector('[data-queue]'),
   btnFooterEl: document.querySelector('.footer__link'),
   footerBackdropEl: document.querySelector('#footer-backdrop'),
-  
-	forBreakScrol: document.querySelector('body'), // for modal window
 }

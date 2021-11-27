@@ -13,13 +13,16 @@ export async function renderWatched() {
   // Добавляем индикатор задержки загрузки
   const onLoadGallery = document.querySelectorAll('.film__card');
   delayIndicator(onLoadGallery, 'film__link', 'film__img', false);
-
+  // Показываем VOTE в карточке фильмЫ
+  document.querySelectorAll('.film__vote_average').forEach(element => {
+    element.classList.remove('is-hidden');
+  });
   if (!refs.watchedBtn.classList.contains('active-button')) {
     refs.watchedBtn.classList.add('active-button');
     refs.queueBtn.classList.remove('active-button');
   }
 }
-
+  
 export async function renderQueue() {
   const queueIds = getQueue();
   const queueMovies = await getLibraryMovies(queueIds);
@@ -29,7 +32,10 @@ export async function renderQueue() {
   // Добавляем индикатор задержки загрузки
   const onLoadGallery = document.querySelectorAll('.film__card');
   delayIndicator(onLoadGallery, 'film__link', 'film__img', false);
-
+  // Показываем VOTE в карточке фильмЫ
+  document.querySelectorAll('.film__vote_average').forEach(element => {
+    element.classList.remove('is-hidden');
+  });
   if (!refs.queueBtn.classList.contains('active-button')) {
     refs.queueBtn.classList.add('active-button');
     refs.watchedBtn.classList.remove('active-button');
