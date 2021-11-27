@@ -33,6 +33,11 @@ function onImageClick(event) {
   event.preventDefault();
   window.addEventListener('keydown', onEscKeyPress);
   modalRefs.lightboxEl.classList.add('is-open');
+
+  const breakScrol = refs.forBreakScrol;
+  breakScrol.style.overflov = "hidden";
+  // console.log(breakScrol)
+
   renderMovieInfo(movieId);
 }
 
