@@ -74,12 +74,14 @@ async function renderMovieInfo(id) {
   modalRefs.button_watched = document.querySelector('.button__watched');
   modalRefs.button_queue = document.querySelector('.button__queue');
   if (checkIfInQueue(id)) {
+    modalRefs.button_queue.classList.add('contentDelete');
     modalRefs.button_queue.textContent = 'delete from queue';
     modalRefs.button_queue.addEventListener('click', onRemoveQueueClick);
   } else {
     modalRefs.button_queue.addEventListener('click', onAddQueueClick);
   }
   if (checkIfInWatched(id)) {
+    modalRefs.button_watched.classList.add('contentDelete');
     modalRefs.button_watched.textContent = 'delete from watched';
     modalRefs.button_watched.addEventListener('click', onRemoveWatchedClick);
   } else {
@@ -89,25 +91,29 @@ async function renderMovieInfo(id) {
 
 function onRemoveWatchedClick(event) {
   removeFromWatched(event);
+  modalRefs.button_watched.classList.remove('contentDelete');
   modalRefs.button_watched.textContent = 'add to watched';
   modalRefs.button_watched.addEventListener('click', onAddWatchedClick);
   modalRefs.button_watched.removeEventListener('click', onRemoveWatchedClick);
 }
 function onRemoveQueueClick(event) {
   removeFromQueue(event);
+  modalRefs.button_queue.classList.remove('contentDelete');
   modalRefs.button_queue.textContent = 'add to queue';
   modalRefs.button_queue.addEventListener('click', onAddQueueClick);
   modalRefs.button_queue.removeEventListener('click', onRemoveQueueClick);
 }
 function onAddWatchedClick(event) {
   addToWatched(event);
+  modalRefs.button_watched.classList.add('contentDelete');
   modalRefs.button_watched.textContent = 'delete from watched';
   modalRefs.button_watched.addEventListener('click', onRemoveWatchedClick);
   modalRefs.button_watched.removeEventListener('click', onAddWatchedClick);
 }
 function onAddQueueClick(event) {
   addToQueue(event);
+  modalRefs.button_queue.classList.add('contentDelete');
   modalRefs.button_queue.textContent = 'delete from queue';
   modalRefs.button_queue.addEventListener('click', onRemoveQueueClick);
-  modalRefs.button_watched.removeEventListener('click', onAddQueueClick);
+  modalRefs.button_queue.removeEventListener('click', onAddQueueClick);
 }
