@@ -37,6 +37,12 @@
 <symbol id="icon-arrow-left" viewBox="0 0 32 32">
 <path d="M1 16l15 15v-9h16v-12h-16v-9z"></path>
 </symbol>
+<symbol id="icon-linkedln" viewBox="0 0 32 32">
+<path fill="#0288d1" style="fill: var(--color1, #0288d1)" d="M16 2.667c-7.333 0-13.333 6-13.333 13.333s6 13.333 13.333 13.333 13.333-6 13.333-13.333-6-13.333-13.333-13.333z"></path>
+<path fill="#fff" style="fill: var(--color2, #fff)" d="M9.333 12.667h2.667v10h-2.667v-10z"></path>
+<path fill="#fff" style="fill: var(--color2, #fff)" d="M10.667 11.333v0c-0.8 0-1.333-0.6-1.333-1.333s0.533-1.333 1.333-1.333c0.8 0 1.333 0.6 1.333 1.333s-0.533 1.333-1.333 1.333z"></path>
+<path fill="#fff" style="fill: var(--color2, #fff)" d="M23.333 16.333c0-2-1.667-3.667-3.667-3.667-1.267 0-2.333 0.6-3 1.533v-1.533h-2.667v10h2.667v-5.333c0-1.133 0.867-2 2-2s2 0.867 2 2v5.333h2.667c0 0 0-6.067 0-6.333z"></path>
+</symbol>
 </defs>
 </svg>
 
