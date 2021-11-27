@@ -1,8 +1,8 @@
 import beautiSpinner from '../templates/spiner';
-
 // // Добавляем индикатор задержки загрузки
 // const onLoadObj = document.querySelectorAll('.objClassForInsertIndicator');
 // delayIndicator(onLoadObj,'classToInsertCodeAfter', 'classLoadableObj', false);
+// для модалки - true
 
 // Индикатор задержки загрузки
 export default function delayIndicator(array, classConteiner, classLoadObj, permit) {

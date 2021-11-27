@@ -1,31 +1,31 @@
 //function for getting values from queue and watched lists in local storage
-function getQueue() {
-  return getFromList('queue');
+function getQueue(page, limit) {
+  return getFromList('queue', page, limit);
 }
-function getWatched() {
-  return getFromList('watched');
+function getWatched(page, limit) {
+  return getFromList('watched', page, limit);
 }
 
 //function for checking if value is in queue or watched lists in local storage
 function checkIfInQueue(id) {
-  const queue = getQueue();
+  const queue = getAllFromList('queue');
   return queue.includes(parseInt(id));
 }
 function checkIfInWatched(id) {
-  const watched = getWatched();
+  const watched = getAllFromList('watched');
   return watched.includes(parseInt(id));
 }
 
 //function to remove value from queue or watched lists in local storage by id
 function removeFromQueue(event) {
-  const queue = getQueue();
+  const queue = getQueue().list;
   localStorage.setItem(
     'queue',
     JSON.stringify(queue.filter(el => el !== parseInt(event.target.dataset.value))),
   );
 }
 function removeFromWatched(event) {
-  const watched = getWatched();
+  const watched = getWatched().list;
   localStorage.setItem(
     'watched',
     JSON.stringify(watched.filter(el => el !== parseInt(event.target.dataset.value))),
@@ -50,7 +50,21 @@ function addToList(listName, value) {
   localStorage.setItem(`${listName}`, JSON.stringify(list));
 }
 // function for getting values from a list in local storage
-function getFromList(listName) {
+function getFromList(listName, page = 1, limit = 4) {
+  let list = JSON.parse(localStorage.getItem(`${listName}`));
+  if (list) {
+    const pages = Math.ceil(list.length / limit);
+    const from = (page - 1) * limit;
+    const to = from + limit;
+    const pag_list = list.slice(from, to);
+    return {
+      list: pag_list,
+      pages,
+    };
+  }
+  return [];
+}
+function getAllFromList(listName) {
   let list = JSON.parse(localStorage.getItem(`${listName}`));
   if (list) return list;
   return [];

@@ -1,9 +1,8 @@
 import { apiService, refs } from './variables.global';
 import movieInfoTmp from '../templates/movie-info.hbs';
 import delayIndicator from './delayIndicator';
+import prepareForShow from './prepareForShow';
 import {
-  getQueue,
-  getWatched,
   checkIfInQueue,
   checkIfInWatched,
   removeFromQueue,
@@ -42,8 +41,10 @@ function onCloseBtnClick() {
   modalRefs.movieInfo.innerHTML = '';
   modalRefs.lightboxEl.classList.remove('is-open');
 
-  modalRefs.button_queue.removeEventListener('click', addToQueue);
-  modalRefs.button_watched.removeEventListener('click', addToWatched);
+  modalRefs.button_queue.removeEventListener('click', onAddQueueClick);
+  modalRefs.button_watched.removeEventListener('click', onAddWatchedClick);
+  modalRefs.button_queue.removeEventListener('click', onRemoveQueueClick);
+  modalRefs.button_watched.removeEventListener('click', onRemoveWatchedClick);
 }
 
 function onOverlayClick(event) {
@@ -60,17 +61,55 @@ function onEscKeyPress(event) {
 
 async function renderMovieInfo(id) {
   const movieInfo = await apiService.getMovieById(id);
-  console.log(movieInfo);
+  prepareForShow(movieInfo);
   modalRefs.movieImg.src = `${movieInfo.poster_path}`;
   modalRefs.movieInfo.insertAdjacentHTML('beforeend', movieInfoTmp(movieInfo));
+
   // Добавляем индикатор задержки загрузки
-  if (movieInfo.poster_path.substr(-4) != 'null') { // якщо нема постера - дзуськи!
+  if (movieInfo.poster_path) {
+    // якщо нема постера - дзуськи!
     const onLoadObj = document.querySelectorAll('.lightbox__content');
     delayIndicator(onLoadObj, 'classToInsertCodeAfter', 'movie-img', true);
-  };
+  }
+
   //Adding EventListeners
-  modalRefs.button_watched = document.querySelector('.button-watched');
-  modalRefs.button_queue = document.querySelector('.button-queue');
-  modalRefs.button_queue.addEventListener('click', addToQueue);
-  modalRefs.button_watched.addEventListener('click', addToWatched);
+  modalRefs.button_watched = document.querySelector('.button__watched');
+  modalRefs.button_queue = document.querySelector('.button__queue');
+  if (checkIfInQueue(id)) {
+    modalRefs.button_queue.textContent = 'delete from queue';
+    modalRefs.button_queue.addEventListener('click', onRemoveQueueClick);
+  } else {
+    modalRefs.button_queue.addEventListener('click', onAddQueueClick);
+  }
+  if (checkIfInWatched(id)) {
+    modalRefs.button_watched.textContent = 'delete from watched';
+    modalRefs.button_watched.addEventListener('click', onRemoveWatchedClick);
+  } else {
+    modalRefs.button_watched.addEventListener('click', onAddWatchedClick);
+  }
+}
+
+function onRemoveWatchedClick(event) {
+  removeFromWatched(event);
+  modalRefs.button_watched.textContent = 'add to watched';
+  modalRefs.button_watched.addEventListener('click', onAddWatchedClick);
+  modalRefs.button_watched.removeEventListener('click', onRemoveWatchedClick);
+}
+function onRemoveQueueClick(event) {
+  removeFromQueue(event);
+  modalRefs.button_queue.textContent = 'add to queue';
+  modalRefs.button_queue.addEventListener('click', onAddQueueClick);
+  modalRefs.button_queue.removeEventListener('click', onRemoveQueueClick);
+}
+function onAddWatchedClick(event) {
+  addToWatched(event);
+  modalRefs.button_watched.textContent = 'delete from watched';
+  modalRefs.button_watched.addEventListener('click', onRemoveWatchedClick);
+  modalRefs.button_watched.removeEventListener('click', onAddWatchedClick);
+}
+function onAddQueueClick(event) {
+  addToQueue(event);
+  modalRefs.button_queue.textContent = 'delete from queue';
+  modalRefs.button_queue.addEventListener('click', onRemoveQueueClick);
+  modalRefs.button_watched.removeEventListener('click', onAddQueueClick);
 }

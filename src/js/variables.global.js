@@ -8,11 +8,11 @@ import ApiService from './apiService';
 
 //  Тут переменные
 export const apiService = new ApiService(); //  Апишка
-
-
-
-
-
+export const breakpoints = { // it, as is
+  mobile: 320,
+  tablet: 768,
+  desktop: 1024,
+}
 
 
 
