@@ -43,4 +43,5 @@ export const refs = {
   queueBtn: document.querySelector('[data-queue]'),
   btnFooterEl: document.querySelector('.footer__link'),
   footerBackdropEl: document.querySelector('#footer-backdrop'),
+  closeModalTeamBtn: document.querySelector('[data-action="close-modal-team"]'),
 }
