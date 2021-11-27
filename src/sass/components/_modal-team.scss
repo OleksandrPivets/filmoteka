@@ -46,15 +46,16 @@
     
     .team__img {
       border-radius: 50%;
+      box-shadow: 5px 5px 11px 2px;
   width: 80px;
   height: 80px;
     }
     
-    .team__git-link {
+    .team__in-link {
       display: flex;
       position: absolute;
-      bottom: 27px;
-      right: 0px;
+      bottom: 35px;
+      right: -5px;
       width: 14px;
       height: 14px;
     
@@ -66,15 +67,15 @@
       }
     
       @media screen and(min-width:768px) {
-        top: 95px;
-        right: 0px;
+        top: 55px;
+        right: 9px;
         width: 24px;
         height: 24px;
       }
     
       @media screen and(min-width:1024px) {
-        top: 115px;
-        right: 15px;
+        top: 58px;
+        right: 30px;
       }
     }
     
