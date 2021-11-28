@@ -78,5 +78,4 @@ export {
   removeFromWatched,
   addToQueue,
   addToWatched,
-  getAllFromList,
 };
