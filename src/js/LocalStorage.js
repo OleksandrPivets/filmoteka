@@ -60,6 +60,7 @@ function getFromList(listName, page = 1, limit = 4) {
     return {
       list: pag_list,
       pages,
+      current: page,
     };
   }
   return [];
