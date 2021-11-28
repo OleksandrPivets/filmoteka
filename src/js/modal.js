@@ -10,6 +10,8 @@ import {
   addToQueue,
   addToWatched,
 } from './LocalStorage';
+import { renderWatched, renderQueue } from './library-rendering';
+
 
 const modalRefs = {
   lightboxEl: document.querySelector('.js-lightbox'),
@@ -17,6 +19,8 @@ const modalRefs = {
   lightboxOverlayEl: document.querySelector('.lightbox__overlay'),
   movieInfo: document.querySelector('.movie-info'),
   movieImg: document.querySelector('[data-movie-img]'),
+  activeWatched: document.querySelector('[data-watched]'),
+  activeQueue: document.querySelector('[data-queue]'),
 };
 
 refs.movieGallery.addEventListener('click', onImageClick);
@@ -39,12 +43,19 @@ function onImageClick(event) {
 function onCloseBtnClick() {
   window.removeEventListener('keydown', onEscKeyPress);
   modalRefs.movieInfo.innerHTML = '';
+  modalRefs.movieImg.src = ``; // стрирает картинку в модалке
   modalRefs.lightboxEl.classList.remove('is-open');
 
   modalRefs.button_queue.removeEventListener('click', onAddQueueClick);
   modalRefs.button_watched.removeEventListener('click', onAddWatchedClick);
   modalRefs.button_queue.removeEventListener('click', onRemoveQueueClick);
   modalRefs.button_watched.removeEventListener('click', onRemoveWatchedClick);
+  // перезагрузка списка при выходе из модалки
+  const libraryOn = document.getElementById('library').className.indexOf('current') ;
+  if (libraryOn !== -1) {
+    if (modalRefs.activeWatched.className.indexOf('active-button') !== -1) renderWatched();
+    if (modalRefs.activeQueue.className.indexOf('active-button') !== -1) renderQueue();
+  };
 }
 
 function onOverlayClick(event) {
