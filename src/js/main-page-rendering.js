@@ -1,6 +1,5 @@
 import { apiService, refs } from './variables.global';
 import genres from '../db/genres.json';
-// import galleryItems from '../templates/movie-card.hbs'; // << уже не нужно
 import galleryItems from '../templates/card.hbs';
 import Notiflix from 'notiflix';
 import delayIndicator from './delayIndicator';
