@@ -7,11 +7,9 @@ import cardPerPage from './cardPerPage'
 import { renderLibraryPagesList } from './pagination'
 
 export async function renderWatched() {
-  
   const watchedIds = getWatched(1, cardPerPage());
   const totalPages = watchedIds.pages;
   const watchedMovies = await getLibraryMovies(watchedIds);
-  console.log(watchedIds)
   refs.movieGallery.innerHTML = '';
   renderLibraryPagesList(totalPages);
   refs.movieGallery.insertAdjacentHTML('beforeend', galleryItems(watchedMovies));

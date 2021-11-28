@@ -1,4 +1,4 @@
-import { refs } from './variables.global';
+import { apiService, refs } from './variables.global';
 import { renderHome } from './main-page-rendering';
 import { renderQueue, renderWatched } from './library-rendering';
 
@@ -32,6 +32,8 @@ function openHome(event){
     refs.headerButtonBox.classList.add('is-hidden');
     refs.watchedBtn.removeEventListener('click', renderWatched);
     refs.queueBtn.removeEventListener('click', renderQueue);
+    refs.searchInput.value = '';
+    apiService.query = '';
     renderHome(event);
 }
 
