@@ -1,7 +1,9 @@
 import {refs} from './variables.global'
 
+
 refs.btnFooterEl.addEventListener('click', onFooterBtnClick);
 refs.footerBackdropEl.addEventListener('click', onFooterModalClose);
+refs.closeModalTeamBtn.addEventListener('click', onClose);
 
 function onFooterBtnClick(e) {
   e.preventDefault();
@@ -21,4 +23,10 @@ function onEscPress(e) {
     refs.footerBackdropEl.classList.add('is-hidden');
   }
   window.removeEventListener('keydown', onEscPress);
+  
+}
+
+function onClose() {
+  refs.footerBackdropEl.classList.add('is-hidden');
+  window.removeEventListener('keydown', onEscPress);  
 }
