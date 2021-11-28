@@ -14,8 +14,7 @@ export async function renderTrending() {
   // Добавляем индикатор задержки загрузки
   const onLoadGallery = document.querySelectorAll('.film__card');
   delayIndicator(onLoadGallery, 'film__link', 'film__img', false);
-  console.log(trending);
-  console.log(genres);
+  totalPages = trending.total_pages;
   renderPagesList(apiService.page);
   hideFirstLastBtn();
   isHideBtn();
@@ -23,7 +22,6 @@ export async function renderTrending() {
 }
 
 export async function renderSearchResults(searchQuery) {
-  apiService.searchQuery = searchQuery;
   apiService.searchQuery = searchQuery.trim();
   if (apiService.searchQuery === '') {
     return Notiflix.Notify.warning('The field is empty! Enter the title of the movie.');
@@ -36,11 +34,8 @@ export async function renderSearchResults(searchQuery) {
   // Добавляем индикатор задержки загрузки
   const onLoadGallery = document.querySelectorAll('.film__card');
   delayIndicator(onLoadGallery, 'film__link', 'film__img', false);
-  console.log(searchResults);
-  console.log(movies);
   if (apiService.page === 1) {
     totalPages = searchResults.total_pages;
-    refs.lastBtn.textContent = totalPages;
   }
   renderPagesList(apiService.page);
   hideFirstLastBtn();
@@ -51,7 +46,6 @@ export async function renderSearchResults(searchQuery) {
 export const renderHome = event => {
   event.preventDefault();
   apiService.resetPage();
-
   refs.movieGallery.innerHTML = '';
   refs.pageList.innerHTML = '';
   renderTrending();
@@ -61,7 +55,6 @@ export const renderHome = event => {
 const search = event => {
   let submitter = event.submitter;
   let searchQuery = refs.searchInput.value;
-
   if (submitter) {
     event.preventDefault();
     apiService.resetPage();
@@ -84,9 +77,7 @@ export async function renderOnStart() {
   const trending = await apiService.getTrendingMovies();
   refs.movieGallery.insertAdjacentHTML('beforeend', galleryItems(trending.results));
   totalPages = trending.total_pages;
-  refs.lastBtn.textContent = totalPages;
   console.log(totalPages);
-
   renderPagesList(apiService.page);
   hideFirstLastBtn();
   isHideBtn();
@@ -95,14 +86,11 @@ export async function renderOnStart() {
   delayIndicator(onLoadGallery, 'film__link', 'film__img', false);
 }
 
-//  Пока не доделано. Для доделки и переделки нужен пагинатор
-
 document.addEventListener('DOMContentLoaded', renderOnStart);
 
 removeAutoLoad();
 
 refs.searchForm.addEventListener('submit', search);
-// refs.homeBtn.forEach(btn => btn.addEventListener('click', renderHome));
 
 //Настройка стилей оповещений
 Notiflix.Notify.init({
