@@ -1,37 +1,26 @@
 import markupMovie from "../templates/card.hbs";
 import { apiService, refs } from "../js/variables.global";
-import { renderOnStart, totalPages, renderTrending, renderSearchResults, searchQuerySaved } from './main-page-rendering';
-
-// export default refs = {
-//   paginationList: document.querySelector('.pagination-box'),
-//   pageList: document.querySelector('.pages'),
-//   lastBtn: document.getElementById('last-page'),
-//   prevBtn: document.getElementById('button-prev'),
-//   nextBtn: document.getElementById('button-next'),
-//   firstPage: document.querySelector('.first'),
-//   lastPage: document.querySelector('.last'),
-// }
+import { totalPages, renderTrending, renderSearchResults, searchQuerySaved } from './main-page-rendering';
 
 let currentPage = 1;
 
 const pageRange = 2;
 
-async function renderPagesList(apiPage) {
+function renderPagesList(apiPage) {
   currentPage = apiPage;
   refs.pageList.innerHTML = '';
   const start = currentPage - pageRange;
   const end = currentPage + pageRange;
-  
   for (let i = start; i <= end; i += 1) {
     if (i > 0 && i <= totalPages) {
       refs.pageList.insertAdjacentHTML(
         'beforeend',
         `<li class="pages-item"><button type="button" class="pagination-btn">${i}</button></li>`,
-      );
+        );
+      }
     }
-  }
+    refs.lastBtn.textContent = totalPages;    
 }
-
 
 refs.paginationList.addEventListener('click', onBtnClick);
 refs.prevBtn.addEventListener('click', onPrevBtnClick);
@@ -136,5 +125,29 @@ function scrollPage() {
 }
 
 export {
-  renderPagesList, hideFirstLastBtn, isHideBtn, activeBtn
+  renderPagesList,
+  hideFirstLastBtn,
+  isHideBtn,
+  activeBtn,
+  renderLibraryPagesList,
+}
+
+function renderLibraryPagesList(totalPages) {
+  currentPage = currentPage;
+  refs.pageList.innerHTML = '';
+  if (totalPages === 1) {
+    // refs.paginationList.innerHTML = '';
+    return;
+  }
+  const start = currentPage - pageRange;
+  const end = currentPage + pageRange;
+  for (let i = start; i <= end; i += 1) {
+    if (i > 0 && i <= totalPages) {
+      refs.pageList.insertAdjacentHTML(
+        'beforeend',
+        `<li class="pages-item"><button type="button" class="pagination-btn">${i}</button></li>`,
+        );
+      }
+    }
+    refs.lastBtn.textContent = totalPages;    
 }

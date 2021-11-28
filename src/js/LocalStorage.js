@@ -18,14 +18,14 @@ function checkIfInWatched(id) {
 
 //function to remove value from queue or watched lists in local storage by id
 function removeFromQueue(event) {
-  const queue = getQueue().list;
+  const queue = getAllFromList('queue');
   localStorage.setItem(
     'queue',
     JSON.stringify(queue.filter(el => el !== parseInt(event.target.dataset.value))),
   );
 }
 function removeFromWatched(event) {
-  const watched = getWatched().list;
+  const watched = getAllFromList('watched');
   localStorage.setItem(
     'watched',
     JSON.stringify(watched.filter(el => el !== parseInt(event.target.dataset.value))),
