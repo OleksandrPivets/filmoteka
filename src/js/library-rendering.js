@@ -3,6 +3,7 @@ import { getQueue, getWatched } from './LocalStorage';
 import galleryItems from '../templates/card.hbs';
 import prepareForShow from './prepareForShow';
 import delayIndicator from './delayIndicator';
+import Notiflix from 'notiflix';
 import cardPerPage from './cardPerPage'
 import { renderLibraryPagesList } from './pagination'
 
@@ -13,6 +14,9 @@ export async function renderWatched() {
   refs.movieGallery.innerHTML = '';
   renderLibraryPagesList(totalPages);
   refs.movieGallery.insertAdjacentHTML('beforeend', galleryItems(watchedMovies));
+  if (!watchedMovies.length) {
+    Notiflix.Notify.warning('The list is empty! Add film to watched.');
+  }
   console.log(watchedMovies);
   // Добавляем индикатор задержки загрузки
   const onLoadGallery = document.querySelectorAll('.film__card');
@@ -26,7 +30,7 @@ export async function renderWatched() {
     refs.queueBtn.classList.remove('active-button');
   }
 }
-  
+
 export async function renderQueue() {
   const queueIds = getQueue(1, cardPerPage());
   const totalPages = queueIds.pages;
@@ -34,6 +38,9 @@ export async function renderQueue() {
   refs.movieGallery.innerHTML = '';
   renderLibraryPagesList(totalPages);
   refs.movieGallery.insertAdjacentHTML('beforeend', galleryItems(queueMovies));
+  if (!queueMovies.length) {
+    Notiflix.Notify.warning('The list is empty! Add film to queue.');
+  }
   console.log(queueMovies);
   // Добавляем индикатор задержки загрузки
   const onLoadGallery = document.querySelectorAll('.film__card');

@@ -23,12 +23,19 @@ export async function renderTrending() {
 
 export async function renderSearchResults(searchQuery) {
   apiService.searchQuery = searchQuery.trim();
+  //оповещение о пустом инпуте
   if (apiService.searchQuery === '') {
     return Notiflix.Notify.warning('The field is empty! Enter the title of the movie.');
   }
-  //оповещение о пустом инпуте
+
   const searchResults = await apiService.searchMovie();
   const movies = searchResults.results;
+  //оповещение о не корректном вводе
+  if (!movies.length) {
+    return Notiflix.Notify.warning(
+      'Search result not successful. Enter the correct movie name and',
+    );
+  }
 
   refs.movieGallery.insertAdjacentHTML('beforeend', galleryItems(movies));
   // Добавляем индикатор задержки загрузки
