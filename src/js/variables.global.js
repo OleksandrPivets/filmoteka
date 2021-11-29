@@ -42,4 +42,5 @@ export const refs = {
 
   bodyEl: document.querySelector('body'),
   lightbox: document.querySelector('.lightbox__content'),
+  checkboxEl:document.querySelector('.theme-switch__toggle'),
 };
