@@ -3,12 +3,16 @@ import { getQueue, getWatched } from './LocalStorage';
 import galleryItems from '../templates/card.hbs';
 import prepareForShow from './prepareForShow';
 import delayIndicator from './delayIndicator';
+import Notiflix from 'notiflix';
 
 export async function renderWatched() {
   const watchedIds = getWatched();
   const watchedMovies = await getLibraryMovies(watchedIds);
   refs.movieGallery.innerHTML = '';
   refs.movieGallery.insertAdjacentHTML('beforeend', galleryItems(watchedMovies));
+  if (!watchedMovies.length) {
+    Notiflix.Notify.warning('The list is empty! Add film to watched.');
+  }
   console.log(watchedMovies);
   // Добавляем индикатор задержки загрузки
   const onLoadGallery = document.querySelectorAll('.film__card');
@@ -22,12 +26,15 @@ export async function renderWatched() {
     refs.queueBtn.classList.remove('active-button');
   }
 }
-  
+
 export async function renderQueue() {
   const queueIds = getQueue();
   const queueMovies = await getLibraryMovies(queueIds);
   refs.movieGallery.innerHTML = '';
   refs.movieGallery.insertAdjacentHTML('beforeend', galleryItems(queueMovies));
+  if (!queueMovies.length) {
+    Notiflix.Notify.warning('The list is empty! Add film to queue.');
+  }
   console.log(queueMovies);
   // Добавляем индикатор задержки загрузки
   const onLoadGallery = document.querySelectorAll('.film__card');
