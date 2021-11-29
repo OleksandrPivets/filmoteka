@@ -163,6 +163,5 @@ function renderLibraryPagesList(totalPages) {
     if (totalPages < 5) {
     refs.firstPage.hidden = true;
     refs.lastPage.hidden = true;
-  
   }  
 }
