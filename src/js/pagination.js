@@ -51,13 +51,13 @@ function onPrevBtnClick(e) {
   e.preventDefault();
  
   if (currentPage > 1) {
+    scrollPage();
     currentPage -= 1;
     apiService.setPage(currentPage)
     refs.movieGallery.innerHTML = '';
     refs.pageList.innerHTML = '';
     
     
-    scrollPage();
   }
   if (apiService.query) {
     renderSearchResults(searchQuerySaved);
@@ -118,7 +118,8 @@ function hideFirstLastBtn() {
 
 
 function scrollPage() {
-    refs.header.scrollIntoView({
+  window.scrollTo({
+    top: 0,
     behavior: 'smooth',
     block: 'end',
   });
@@ -136,18 +137,31 @@ function renderLibraryPagesList(totalPages) {
   currentPage = currentPage;
   refs.pageList.innerHTML = '';
   if (totalPages === 1) {
-    // refs.paginationList.innerHTML = '';
+    refs.paginationList.innerHTML = '';
+    refs.nextBtn.innerHTML = '';
+    refs.prevBtn.innerHTML = '';
     return;
   }
+  
+   console.log(refs.lastPage)
   const start = currentPage - pageRange;
   const end = currentPage + pageRange;
   for (let i = start; i <= end; i += 1) {
     if (i > 0 && i <= totalPages) {
+     
       refs.pageList.insertAdjacentHTML(
         'beforeend',
         `<li class="pages-item"><button type="button" class="pagination-btn">${i}</button></li>`,
         );
-      }
     }
-    refs.lastBtn.textContent = totalPages;    
+  }
+
+  hideFirstLastBtn(),
+  isHideBtn(),
+  activeBtn(),
+    refs.lastBtn.textContent = totalPages;  
+    if (totalPages < 5) {
+    refs.firstPage.hidden = true;
+    refs.lastPage.hidden = true;
+  }  
 }
