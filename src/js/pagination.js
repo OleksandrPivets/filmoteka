@@ -73,14 +73,14 @@ function onNextBtnClick(e) {
     currentPage += 1;
   }
   scrollPage();
-  refs.movieGallery.innerHTML = '';
+  setTimeout(()=>{refs.movieGallery.innerHTML = '';
   refs.pageList.innerHTML = '';
   apiService.setPage(currentPage);
   if (apiService.query) {
     renderSearchResults(searchQuerySaved);
   } else {
     renderTrending();
-  }
+  }}, 500)
 }
 function isHideBtn() {
   if (currentPage === 1) {
@@ -142,9 +142,7 @@ function renderLibraryPagesList(totalPages) {
   currentPage = currentPage;
   refs.pageList.innerHTML = '';
   if (totalPages === 1) {
-    refs.paginationList.innerHTML = '';
-    refs.nextBtn.innerHTML = '';
-    refs.prevBtn.innerHTML = '';
+    refs.paginationRef.classList.add('is-hidden');
     return;
   }
   
