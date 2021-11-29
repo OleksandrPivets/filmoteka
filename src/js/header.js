@@ -28,6 +28,9 @@ function openHome(event){
             btn.classList.add('current')            
         }
     });
+    if (refs.paginationRef.classList.contains('is-hidden')) {
+        refs.paginationRef.classList.remove('is-hidden');
+    }
     refs.headerFormBox.classList.remove('is-hidden');
     refs.headerButtonBox.classList.add('is-hidden');
     refs.watchedBtn.removeEventListener('click', renderWatched);

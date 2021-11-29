@@ -25,7 +25,7 @@ export const refs = {
   header: document.getElementById('header'),
   headerFormBox: document.getElementById('form-box'),
   headerButtonBox: document.getElementById('button-box'),
-
+  paginationRef: document.querySelector('.pagination-js'),
   paginationList: document.querySelector('.pagination-box'),
   pageList: document.querySelector('.pages'),
   lastBtn: document.getElementById('last-page'),
