@@ -3,11 +3,15 @@ import { getQueue, getWatched } from './LocalStorage';
 import galleryItems from '../templates/card.hbs';
 import prepareForShow from './prepareForShow';
 import delayIndicator from './delayIndicator';
+import cardPerPage from './cardPerPage'
+import { renderLibraryPagesList } from './pagination'
 
 export async function renderWatched() {
-  const watchedIds = getWatched();
+  const watchedIds = getWatched(1, cardPerPage());
+  const totalPages = watchedIds.pages;
   const watchedMovies = await getLibraryMovies(watchedIds);
   refs.movieGallery.innerHTML = '';
+  renderLibraryPagesList(totalPages);
   refs.movieGallery.insertAdjacentHTML('beforeend', galleryItems(watchedMovies));
   console.log(watchedMovies);
   // Добавляем индикатор задержки загрузки
@@ -24,9 +28,11 @@ export async function renderWatched() {
 }
   
 export async function renderQueue() {
-  const queueIds = getQueue();
+  const queueIds = getQueue(1, cardPerPage());
+  const totalPages = queueIds.pages;
   const queueMovies = await getLibraryMovies(queueIds);
   refs.movieGallery.innerHTML = '';
+  renderLibraryPagesList(totalPages);
   refs.movieGallery.insertAdjacentHTML('beforeend', galleryItems(queueMovies));
   console.log(queueMovies);
   // Добавляем индикатор задержки загрузки
