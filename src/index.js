@@ -4,3 +4,4 @@ import './js/header';
 import './js/modal';
 import './js/pagination';
 import './js/modal-team';
+import './js/theme-switch';

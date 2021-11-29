@@ -12,7 +12,6 @@ import {
 } from './LocalStorage';
 import { renderWatched, renderQueue } from './library-rendering';
 
-
 const modalRefs = {
   lightboxEl: document.querySelector('.js-lightbox'),
   closeModalBtn: document.querySelector('[data-action="close-lightbox"]'),
@@ -42,6 +41,7 @@ function onImageClick(event) {
 
 function onCloseBtnClick() {
   window.removeEventListener('keydown', onEscKeyPress);
+  refs.bodyEl.style.overflow = 'visible';
   modalRefs.movieInfo.innerHTML = '';
   modalRefs.movieImg.src = ``; // стрирает картинку в модалке
   modalRefs.lightboxEl.classList.remove('is-open');
@@ -51,11 +51,11 @@ function onCloseBtnClick() {
   modalRefs.button_queue.removeEventListener('click', onRemoveQueueClick);
   modalRefs.button_watched.removeEventListener('click', onRemoveWatchedClick);
   // перезагрузка списка при выходе из модалки
-  const libraryOn = document.getElementById('library').className.indexOf('current') ;
+  const libraryOn = document.getElementById('library').className.indexOf('current');
   if (libraryOn !== -1) {
     if (modalRefs.activeWatched.className.indexOf('active-button') !== -1) renderWatched();
     if (modalRefs.activeQueue.className.indexOf('active-button') !== -1) renderQueue();
-  };
+  }
 }
 
 function onOverlayClick(event) {
@@ -75,6 +75,10 @@ async function renderMovieInfo(id) {
   prepareForShow(movieInfo);
   modalRefs.movieImg.src = `${movieInfo.poster_path}`;
   modalRefs.movieInfo.insertAdjacentHTML('beforeend', movieInfoTmp(movieInfo));
+  refs.bodyEl.style.overflow = 'hidden';
+  refs.lightbox.overflow = 'auto';
+  refs.lightbox.style.maxHeight = 'calc(90vh)';
+
   // Добавляем индикатор задержки загрузки
   if (movieInfo.poster_path) {
     // якщо нема постера - дзуськи!

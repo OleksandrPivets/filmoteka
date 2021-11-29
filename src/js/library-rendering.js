@@ -4,11 +4,15 @@ import galleryItems from '../templates/card.hbs';
 import prepareForShow from './prepareForShow';
 import delayIndicator from './delayIndicator';
 import Notiflix from 'notiflix';
+import cardPerPage from './cardPerPage'
+import { renderLibraryPagesList } from './pagination'
 
 export async function renderWatched() {
-  const watchedIds = getWatched();
+  const watchedIds = getWatched(1, cardPerPage());
+  const totalPages = watchedIds.pages;
   const watchedMovies = await getLibraryMovies(watchedIds);
   refs.movieGallery.innerHTML = '';
+  renderLibraryPagesList(totalPages);
   refs.movieGallery.insertAdjacentHTML('beforeend', galleryItems(watchedMovies));
   if (!watchedMovies.length) {
     Notiflix.Notify.warning('The list is empty! Add film to watched.');
@@ -28,9 +32,11 @@ export async function renderWatched() {
 }
 
 export async function renderQueue() {
-  const queueIds = getQueue();
+  const queueIds = getQueue(1, cardPerPage());
+  const totalPages = queueIds.pages;
   const queueMovies = await getLibraryMovies(queueIds);
   refs.movieGallery.innerHTML = '';
+  renderLibraryPagesList(totalPages);
   refs.movieGallery.insertAdjacentHTML('beforeend', galleryItems(queueMovies));
   if (!queueMovies.length) {
     Notiflix.Notify.warning('The list is empty! Add film to queue.');
