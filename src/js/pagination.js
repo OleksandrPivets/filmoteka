@@ -1,14 +1,5 @@
 
 import markupMovie from '../templates/card.hbs';
-import { apiService, refs } from '../js/variables.global';
-import {
-  renderOnStart,
-  totalPages,
-  renderTrending,
-  renderSearchResults,
-  searchQuerySaved,
-} from './main-page-rendering';
-import markupMovie from "../templates/card.hbs";
 import { apiService, refs } from "../js/variables.global";
 import { totalPages, renderTrending, renderSearchResults, searchQuerySaved } from './main-page-rendering';
 
@@ -132,7 +123,6 @@ function hideFirstLastBtn() {
 }
 
 function scrollPage() {
-  refs.header.scrollIntoView({
   window.scrollTo({
     top: 0,
     behavior: 'smooth',
@@ -158,7 +148,7 @@ function renderLibraryPagesList(totalPages) {
     return;
   }
   
-   console.log(refs.lastPage)
+  console.log(refs.lastPage)
   const start = currentPage - pageRange;
   const end = currentPage + pageRange;
   for (let i = start; i <= end; i += 1) {
@@ -167,16 +157,16 @@ function renderLibraryPagesList(totalPages) {
       refs.pageList.insertAdjacentHTML(
         'beforeend',
         `<li class="pages-item"><button type="button" class="pagination-btn">${i}</button></li>`,
-        );
+      );
     }
   }
 
   hideFirstLastBtn(),
-  isHideBtn(),
-  activeBtn(),
-    refs.lastBtn.textContent = totalPages;  
-    if (totalPages < 5) {
+    isHideBtn(),
+    activeBtn(),
+    refs.lastBtn.textContent = totalPages;
+  if (totalPages < 5) {
     refs.firstPage.hidden = true;
     refs.lastPage.hidden = true;
-  }  
-
+  }
+}
