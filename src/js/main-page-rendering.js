@@ -1,12 +1,9 @@
-import { apiService, refs } from './variables.global';
-import genres from '../db/genres.json';
+import { apiService, paginator, PAGIN_MODES, refs } from './variables.global';
 import galleryItems from '../templates/card.hbs';
 import Notiflix from 'notiflix';
 import delayIndicator from './delayIndicator';
-import { renderPagesList, hideFirstLastBtn, isHideBtn, activeBtn } from './pagination';
 
-export let totalPages;
-export let searchQuerySaved;
+let totalPages;
 
 export async function renderTrending() {
   const trending = await apiService.getTrendingMovies();
@@ -15,10 +12,7 @@ export async function renderTrending() {
   const onLoadGallery = document.querySelectorAll('.film__card');
   delayIndicator(onLoadGallery, 'film__link', 'film__img', false);
   totalPages = trending.total_pages;
-  renderPagesList(apiService.page);
-  hideFirstLastBtn();
-  isHideBtn();
-  activeBtn();
+  paginator.renderPagesList(apiService.page, totalPages, PAGIN_MODES.TREND);
 }
 
 export async function renderSearchResults(searchQuery) {
@@ -44,10 +38,7 @@ export async function renderSearchResults(searchQuery) {
   if (apiService.page === 1) {
     totalPages = searchResults.total_pages;
   }
-  renderPagesList(apiService.page);
-  hideFirstLastBtn();
-  isHideBtn();
-  activeBtn();
+  paginator.renderPagesList(apiService.page, totalPages, PAGIN_MODES.SEARCH);;
 }
 
 export const renderHome = event => {
@@ -56,7 +47,6 @@ export const renderHome = event => {
   refs.movieGallery.innerHTML = '';
   refs.pageList.innerHTML = '';
   renderTrending();
-  activeBtn();
 };
 
 const search = event => {
@@ -70,7 +60,6 @@ const search = event => {
       return;
     }
     renderSearchResults(searchQuery);
-    searchQuerySaved = searchQuery;
   }
 };
 
@@ -85,10 +74,7 @@ export async function renderOnStart() {
   refs.movieGallery.insertAdjacentHTML('beforeend', galleryItems(trending.results));
   totalPages = trending.total_pages;
   console.log(totalPages);
-  renderPagesList(apiService.page);
-  hideFirstLastBtn();
-  isHideBtn();
-  activeBtn();
+  paginator.renderPagesList(apiService.page, totalPages, PAGIN_MODES.TREND);
   const onLoadGallery = document.querySelectorAll('.film__card');
   delayIndicator(onLoadGallery, 'film__link', 'film__img', false);
 }
@@ -113,3 +99,5 @@ Notiflix.Notify.init({
     textShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)',
   },
 });
+
+console.log(paginator)

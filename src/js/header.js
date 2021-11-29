@@ -15,8 +15,8 @@ function openLibrary (event) {
     refs.searchForm.classList.add('form-search__border');
     event.preventDefault()
     renderWatched()
-    refs.watchedBtn.addEventListener('click', renderWatched);
-    refs.queueBtn.addEventListener('click', renderQueue);
+    refs.watchedBtn.addEventListener('click', renderWatchedCall);
+    refs.queueBtn.addEventListener('click', renderQueueCall);
 }
 
 function openHome(event){
@@ -33,8 +33,8 @@ function openHome(event){
     }
     refs.headerFormBox.classList.remove('is-hidden');
     refs.headerButtonBox.classList.add('is-hidden');
-    refs.watchedBtn.removeEventListener('click', renderWatched);
-    refs.queueBtn.removeEventListener('click', renderQueue);
+    refs.watchedBtn.removeEventListener('click', renderWatchedCall);
+    refs.queueBtn.removeEventListener('click', renderQueueCall);
     refs.searchInput.value = '';
     apiService.query = '';
     renderHome(event);
@@ -42,3 +42,11 @@ function openHome(event){
 
 refs.libraryBtn.addEventListener('click', openLibrary);
 refs.homeBtn.forEach(btn => btn.addEventListener('click', openHome));
+
+const renderWatchedCall = () => {
+    renderWatched();
+}
+
+const renderQueueCall = () => {
+    renderQueue();
+}

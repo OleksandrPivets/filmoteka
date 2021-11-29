@@ -4,9 +4,17 @@
 
 //  Тут импорты
 import ApiService from './apiService';
+import Paginator from './pagination';
 
 //  Тут переменные
+export const PAGIN_MODES = {
+  TREND: 'trending',
+  SEARCH: 'search',
+  WATCHED: 'watched',
+  QUEUE: 'queue',
+}
 export const apiService = new ApiService(); //  Апишка
+export const paginator = new Paginator();   //  Пагинация))
 export const breakpoints = {
   // it, as is
   mobile: 320,
@@ -25,6 +33,8 @@ export const refs = {
   header: document.getElementById('header'),
   headerFormBox: document.getElementById('form-box'),
   headerButtonBox: document.getElementById('button-box'),
+
+  // Секция пагинатора
   paginationRef: document.querySelector('.pagination-js'),
   paginationList: document.querySelector('.pagination-box'),
   pageList: document.querySelector('.pages'),
