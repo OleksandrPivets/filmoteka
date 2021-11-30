@@ -38,9 +38,9 @@ export default class Paginator {
       }
     }
     refs.lastBtn.textContent = this.totalPages;
-    this.isHideBtn(page);
-    this.activeBtn(page);
-    this.hideFirstLstBtn(page);
+    this.isHideBtn();
+    this.activeBtn();
+    this.hideFirstLstBtn();
   }
 
   onBtnClick(e) {
@@ -69,39 +69,39 @@ export default class Paginator {
     this.render();
   }
 
-  isHideBtn(page) {
-    if (page = 1) {
+  isHideBtn() {
+    if (this.currentPage === 1) {
       refs.prevBtn.disabled = true;
     } else {
       refs.prevBtn.disabled = false;
     };
 
-    if (page === this.totalPages) {
+    if (this.currentPage === this.totalPages) {
       refs.nextBtn.disabled = true;
     } else {
       refs.nextBtn.disabled = false;
     };
   }
 
-  activeBtn(page) {
+  activeBtn() {
     let pagesItem = refs.pageList.querySelectorAll('button');
     for (let i = 0; i < pagesItem.length; i++){
-      if (Number(pagesItem[i].textContent) === page) {
+      if (Number(pagesItem[i].textContent) === this.currentPage) {
         pagesItem[i].classList.add('active-btn');
       } else if (
-        Number(pagesItem[i].textContent) !== page &&
+        Number(pagesItem[i].textContent) !== this.currentPage &&
         pagesItem[i].classList.contains('active-btn')) {
         pagesItem[i].classList.remove('active-btn')
       };
     }
   }
-  hideFirstLstBtn(page) {
-    if (page < 4) {
+  hideFirstLstBtn() {
+    if (this.currentPage < 4) {
       refs.firstPage.hidden = true;
     } else {
       refs.firstPage.hidden = false;
     };
-    if (page > this.totalPages - 3) {
+    if (this.currentPage > this.totalPages - 3) {
       refs.lastPage.hidden = true;
     } else {
       refs.lastPage.hidden = false;

@@ -74,7 +74,6 @@ export async function renderOnStart() {
   const trending = await apiService.getTrendingMovies();
   refs.movieGallery.insertAdjacentHTML('beforeend', galleryItems(trending.results));
   totalPages = trending.total_pages;
-  console.log(totalPages);
   paginator.renderPagesList(apiService.page, totalPages, PAGIN_MODES.TREND);
   const onLoadGallery = document.querySelectorAll('.film__card');
   delayIndicator(onLoadGallery, 'film__link', 'film__img', false);
@@ -100,5 +99,3 @@ Notiflix.Notify.init({
     textShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)',
   },
 });
-
-console.log(paginator)
