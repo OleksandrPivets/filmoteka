@@ -8,7 +8,7 @@
     &:hover,
     &:focus {
       fill: var(--main-text-genre-color);
-      transition: fill var(--animation-duration) cubic-bezier(0.4, 0, 0.2, 1);;
+      transition: fill var(--animation-duration) $cubic;
     }
   
     @media screen and (min-width: $mobile) {

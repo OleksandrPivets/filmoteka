@@ -73,7 +73,7 @@ max-width: 1023px;
     font-weight: 500;
     font-size: 30px;
     line-height: 1.17;
-    color: #FFFFFF;
+    color: var(--main-background-light-color);
       }
     }
     &-list{
@@ -149,7 +149,7 @@ color:var(--main-text-dark-color);
   position: relative;
   justify-content: space-between;
   width: 280px;
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: $tablet) {
       width: 336px;}
 }
 .form-search__border{
