@@ -31,6 +31,9 @@ function openHome(event){
     if (refs.paginationRef.classList.contains('is-hidden')) {
         refs.paginationRef.classList.remove('is-hidden');
     }
+    if (!refs.emptyLibImg.classList.contains('is-hidden')) {
+        refs.emptyLibImg.classList.add('is-hidden');
+    }
     refs.headerFormBox.classList.remove('is-hidden');
     refs.headerButtonBox.classList.add('is-hidden');
     refs.watchedBtn.removeEventListener('click', renderWatchedCall);
