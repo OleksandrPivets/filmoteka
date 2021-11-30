@@ -48,6 +48,7 @@ export const refs = {
 
   watchedBtn: document.querySelector('[data-watched]'),
   queueBtn: document.querySelector('[data-queue]'),
+  
   btnFooterEl: document.querySelector('.footer__link'),
   footerBackdropEl: document.querySelector('#footer-backdrop'),
   closeModalTeamBtn: document.querySelector('[data-action="close-modal-team"]'),
@@ -55,4 +56,6 @@ export const refs = {
   bodyEl: document.querySelector('body'),
   lightbox: document.querySelector('.lightbox__content'),
   checkboxEl:document.querySelector('.theme-switch__toggle'),
+
+  buttonUpEl: document.querySelector('.button-up'),
 };

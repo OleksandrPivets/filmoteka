@@ -29,6 +29,14 @@ body {
   .movie__properties{
     color: var(--main-text-light-color);
   }
+  .button-up{
+    fill: white;
+    &:hover,
+    &:focus {
+      fill: var(--main-text-genre-color);
+      transition: fill var(--animation-duration) cubic-bezier(0.4, 0, 0.2, 1);;
+    }
+  }
   }
 }
 
