@@ -14,14 +14,12 @@ export default class Paginator {
   }
   
   renderPagesList(page, totalPages, mode) {
-    if (mode === PAGIN_MODES.WATCHED || mode === PAGIN_MODES.QUEUE) {
-      if (totalPages === 1) {
-        refs.paginationRef.classList.add('is-hidden');
-        return;
-      } else {
-        if (refs.paginationRef.classList.contains('is-hidden')) {
-          refs.paginationRef.classList.remove('is-hidden');
-        }
+    if (totalPages === 1) {
+      refs.paginationRef.classList.add('is-hidden');
+      return;
+    } else {
+      if (refs.paginationRef.classList.contains('is-hidden')) {
+        refs.paginationRef.classList.remove('is-hidden');
       }
     }
     this.currentPage = page;

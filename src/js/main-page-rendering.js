@@ -26,6 +26,7 @@ export async function renderSearchResults(searchQuery) {
   const movies = searchResults.results;
   //оповещение о не корректном вводе
   if (!movies.length) {
+    refs.paginationRef.classList.add('is-hidden');
     return Notiflix.Notify.warning(
       'Search result not successful. Enter the correct movie name and',
     );
