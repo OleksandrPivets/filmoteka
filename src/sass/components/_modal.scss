@@ -27,15 +27,18 @@
     background-color: #fff;
     padding: 48px 20px 41px;
     width: 280px;
+    z-index: 1;
     overflow-y: auto;
 
     @media screen and (min-width: $tablet) and (max-width: ($desktop - 1px)) {
       width: 618px;
       padding: 42px 29px 40px 28px;
+      overflow-y: hidden;
     }
     @media screen and (min-width: $desktop) {
       width: 882px;
       padding: 50px 30px 40px;
+      overflow-y: hidden;
     }
   }
 

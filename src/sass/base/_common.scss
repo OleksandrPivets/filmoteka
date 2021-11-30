@@ -10,15 +10,40 @@ body {
   }
 
   &.dark-theme {
-    background-color: var(--main-background-dark-color);
+    background-color: grey;
 
     .film__title {
       color: var(--main-text-dark-color);
     }
+
+    .lightbox__content,
+    .team,
+    .button__modal,
+    .movie__vote-count{
+      background-color: grey;
+    }
+    .button__modal:hover {
+      background-color: var(--main-background-vote-color);
+      color: var(--main-text-dark-color);
+      border: none;
+  }
+  .movie__properties{
+    color: var(--main-text-light-color);
+  }
+  .button-up{
+    fill: white;
+    &:hover,
+    &:focus {
+      fill: var(--main-text-genre-color);
+      transition: fill var(--animation-duration) cubic-bezier(0.4, 0, 0.2, 1);;
+    }
+  }
+
     .film__genre {
       text-shadow: -.2px -.1px .2px #fff,
         .3px .4px 1px black;
     }
+
   }
 }
 

@@ -6,3 +6,4 @@ import './js/pagination';
 import './js/modal-team';
 import './js/theme-switch';
 import './js/events';
+import './js/button-up';
