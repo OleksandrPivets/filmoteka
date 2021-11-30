@@ -45,9 +45,11 @@
       border-radius: 50%;
       box-shadow: 5px 5px 11px 2px;
       justify-content: center;
+      align-items: center;
   width: 80px;
   height: 80px;
   margin-bottom: 10px;
+  
     }
     
     .team__in-link {
@@ -58,7 +60,7 @@
       width: 14px;
       height: 14px;
     
-      transition: transform var(--animation-duration) cubic-bezier(0.4, 0, 0.2, 1);
+      transition: transform var(--animation-duration) $cubic;
     
       &:hover,
       &:focus {
@@ -98,7 +100,7 @@
     }
     
     #footer-backdrop {
-      transition: opacity 500ms cubic-bezier(0.4, 0, 0.2, 1), visibility 500ms cubic-bezier(0.4, 0, 0.2, 1), transform 500ms cubic-bezier(0.4, 0, 0.2, 1);
+      transition: opacity 500ms $cubic, visibility 500ms $cubic, transform 500ms $cubic;
       transform: scale(1);
     }
     

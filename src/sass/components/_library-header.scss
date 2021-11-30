@@ -13,39 +13,39 @@
     background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
       url(.././images/library/lib_mobx2.jpg);
   }
-  @media (min-device-pixel-ratio: 1) and (min-width: 768px),
-    (min-resolution: 192dpi) and (min-width: 768px),
-    (min-resolution: 1dppx) and (min-width: 768px) {
+  @media (min-device-pixel-ratio: 1) and (min-width: $tablet),
+    (min-resolution: 192dpi) and (min-width: $tablet),
+    (min-resolution: 1dppx) and (min-width: $tablet) {
     background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
       url(.././images/library/lib_tabx1.jpg);
     max-width: 1023px;
   }
-  @media (min-device-pixel-ratio: 2) and (min-width: 768px),
-    (min-resolution: 192dpi) and (min-width: 768px),
-    (min-resolution: 2dppx) and (min-width: 768px) {
+  @media (min-device-pixel-ratio: 2) and (min-width: $tablet),
+    (min-resolution: 192dpi) and (min-width: $tablet),
+    (min-resolution: 2dppx) and (min-width: $tablet) {
     background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
       url(.././images/library/lib_tabx2.jpg);
     max-width: 1023px;
   }
-  @media (min-device-pixel-ratio: 1) and (min-width: 1024px),
-    (min-resolution: 192dpi) and (min-width: 1024px),
-    (min-resolution: 1dppx) and (min-width: 1024px) {
+  @media (min-device-pixel-ratio: 1) and (min-width: $desktop),
+    (min-resolution: 192dpi) and (min-width: $desktop),
+    (min-resolution: 1dppx) and (min-width: $desktop) {
     background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
       url(.././images/library/lib_lapx1.jpg);
-    max-width: 1024px;
+    max-width: $desktop;
   }
-  @media (min-device-pixel-ratio: 2) and (min-width: 1024px),
-    (min-resolution: 192dpi) and (min-width: 1024px),
-    (min-resolution: 2dppx) and (min-width: 1024px) {
+  @media (min-device-pixel-ratio: 2) and (min-width: $desktop),
+    (min-resolution: 192dpi) and (min-width: $desktop),
+    (min-resolution: 2dppx) and (min-width: $desktop) {
     background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
       url(.././images/library/lib_lapx2.jpg);
-    max-width: 1024;
+    max-width: $desktop;
   }
 }
 .button-box {
   position: absolute;
   width: 284px;
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: $tablet) {
     width: 292px;
   }
 }
@@ -68,7 +68,7 @@
 }
 .library-button:hover {
   background: var(--main-background-vote-color);
-  border: 1px solid #ff6b01;
+  border: 1px solid var(--main-background-vote-color);
   box-shadow: 0px 8px 43px rgba(255, 107, 1, 0.6);
 }
 .library-button:focus {
@@ -77,13 +77,13 @@
 }
 .library-button:first-child {
   margin-right: 20px;
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: $tablet) {
     margin-right: 15px;
   }
 }
 
 .active-button {
   background: var(--main-background-vote-color);
-  border: 1px solid #ff6b01;
+  border: 1px solid var(--main-background-vote-color);
   box-shadow: 0px 8px 43px rgba(255, 107, 1, 0.6);
 }

@@ -151,5 +151,5 @@ ul {
 .touch-transform {
   transition-property: color, fill, background-color, border, box-shadow, opacity, transform;
   transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-timing-function: $cubic;
 }
