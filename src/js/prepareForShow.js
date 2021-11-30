@@ -1,7 +1,7 @@
 // Выводим значение
 export default function prepareForShow(array) {
   if (array.length === 0) {
-    // ansver = false; // если ничего не пришло в ответе
+    // answer = false; // если ничего не пришло в ответе
     return;
   }
   if (array.genres.length === 0) {
@@ -14,6 +14,6 @@ export default function prepareForShow(array) {
   array.genreShow = array.genres.join(', '); // дорисовываем запятые
   array.release_year = array.release_date.substring(0, 4); // делаем год релиза
 
-  // ansver = true;
+  // answer = true;
   return array;
 }

@@ -13,9 +13,9 @@ export const PAGIN_MODES = {
   SEARCH: 'search',
   WATCHED: 'watched',
   QUEUE: 'queue',
-}
+};
 export const apiService = new ApiService(); //  Апишка
-export const paginator = new Paginator();   //  Пагинация))
+export const paginator = new Paginator(); //  Пагинация))
 export const ls = new LS();
 export const breakpoints = {
   // it, as is
@@ -27,9 +27,9 @@ export const breakpoints = {
 //  Ниже ссылки на обьекты DOM-дерева
 export const refs = {
   navList: document.querySelector('[data-navigation]'),
-  homeBtn: document.querySelectorAll('[data-home]'), //  Просьба добавить эти два атрибута на кнопки в хедере
-  libraryBtn: document.querySelector('[data-library]'), //  Просьба добавить эти два атрибута на кнопки в хедере
-  movieGallery: document.querySelector('[data-movie-gallery]'), //  Этот атрибут повесить на галерею
+  homeBtn: document.querySelectorAll('[data-home]'),
+  libraryBtn: document.querySelector('[data-library]'),
+  movieGallery: document.querySelector('[data-movie-gallery]'),
   searchForm: document.querySelector('#form-search'),
   searchInput: document.querySelector('.search-input'),
   header: document.getElementById('header'),
@@ -49,14 +49,14 @@ export const refs = {
 
   watchedBtn: document.querySelector('[data-watched]'),
   queueBtn: document.querySelector('[data-queue]'),
-  
+
   btnFooterEl: document.querySelector('.footer__link'),
   footerBackdropEl: document.querySelector('#footer-backdrop'),
   closeModalTeamBtn: document.querySelector('[data-action="close-modal-team"]'),
 
   bodyEl: document.querySelector('body'),
   lightbox: document.querySelector('.lightbox__content'),
-  checkboxEl:document.querySelector('.theme-switch__toggle'),
+  checkboxEl: document.querySelector('.theme-switch__toggle'),
 
   buttonUpEl: document.querySelector('.button-up'),
 };
