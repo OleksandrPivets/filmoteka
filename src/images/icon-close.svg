@@ -1,1 +1,11 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" /><path d="M0 0h24v24H0z" fill="none"/></svg>
+<svg  aria-hidden="true" 
+      style="position: absolute; width: 0; height: 0; overflow: hidden;" 
+      version="1.1" 
+      xmlns="http://www.w3.org/2000/svg" 
+      xmlns:xlink="http://www.w3.org/1999/xlink">
+  <defs>
+    <symbol id="icon-closed" viewBox="0 0 11 11">
+      <path d="M11 1.10786L9.89214 0L5.5 4.39214L1.10786 0L0 1.10786L4.39214 5.5L0 9.89214L1.10786 11L5.5 6.60786L9.89214 11L11 9.89214L6.60786 5.5L11 1.10786Z"></path>
+    </symbol>
+  </defs>
+</svg>

@@ -11,25 +11,43 @@ body {
 
   &.dark-theme {
     background-color: grey;
-
-    .film__title {
+    .film__title,
+    .button__modal,
+    .movie-info__title,
+    .movie__title, 
+    .movie__overview,
+    .movie__vote-count,
+    .movie__value-num,
+    .movie__value-str-title,
+    .movie__value-str {
       color: var(--main-text-dark-color);
     }
-
+    .button__modal.contentDelete {
+      border: 2px solid var(--main-background-vote-color);
+      color: var(--main-background-vote-color);
+            text-shadow: -.1px -.1px 1px rgb(197, 197, 197),
+            .3px .4px 3px black;
+}
+    .movie__properties {
+    color: rgb(194, 194, 194);
+    }  
+    .lightbox__button {
+      fill: var(--main-text-dark-color);
+    }
     .lightbox__content,
     .team,
     .button__modal,
-    .movie__vote-count{
+    .movie__vote-count {
       background-color: grey;
     }
-    .button__modal:hover {
-      background-color: var(--main-background-vote-color);
-      color: var(--main-text-dark-color);
-      border: none;
-  }
-  .movie__properties{
-    color: var(--main-text-light-color);
-  }
+    .button__modal {
+      border-color: var(--main-text-dark-color);
+      &:hover {
+        background-color: var(--main-background-vote-color);
+        color: var(--main-text-dark-color);
+        border: none;
+      }
+    }
   .button-up{
     fill: white;
     &:hover,
