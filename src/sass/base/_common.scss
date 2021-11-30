@@ -15,6 +15,10 @@ body {
     .film__title {
       color: var(--main-text-dark-color);
     }
+    .film__genre {
+      text-shadow: -.2px -.1px .2px #fff,
+        .3px .4px 1px black;
+    }
   }
 }
 
