@@ -27,9 +27,9 @@
     background-color: #fff;
     padding: 48px 20px 41px;
     width: 280px;
-
     overflow-y: auto;
-    @media screen and (min-width: $tablet) and (max-width: $desktop - 1px) {
+
+    @media screen and (min-width: $tablet) and (max-width: ($desktop - 1px)) {
       width: 618px;
       padding: 42px 29px 40px 28px;
     }
@@ -54,10 +54,6 @@
     background-position: center;
     background-repeat: no-repeat;
   }
-  // &__button:hover,
-  // &__button:focus {
-  //   fill: var(--main-text-dark-color);
-  // }
 
   &__image {
     display: flex;
@@ -66,7 +62,7 @@
     @media screen and (min-width: $tablet) {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      @media screen and (max-width: $desktop - 1px) {
+      @media screen and (max-width: ($desktop - 1px)) {
         grid-column-gap: 31px;
       }
       @media screen and (min-width: $desktop) {
