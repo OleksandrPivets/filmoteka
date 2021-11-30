@@ -3,7 +3,7 @@ import galleryItems from '../templates/card.hbs';
 import prepareForShow from './prepareForShow';
 import delayIndicator from './delayIndicator';
 import Notiflix from 'notiflix';
-import cardPerPage from './cardPerPage'
+import cardPerPage from './cardPerPage';
 
 export async function renderWatched(page) {
   if (!page) {
@@ -44,7 +44,6 @@ export async function renderQueue(page) {
   const totalPages = queueIds.pages;
   const queueMovies = await getLibraryMovies(queueIds);
   refs.movieGallery.innerHTML = '';
-  console.log(queueMovies)
   if (queueMovies.length === 0) {
     refs.emptyLibImg.classList.remove('is-hidden');
     page = 0;
