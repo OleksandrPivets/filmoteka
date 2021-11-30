@@ -117,9 +117,9 @@ export default class Paginator {
   }
 
   render() {
-    refs.movieGallery.innerHTML = '';
-    refs.pageList.innerHTML = '';
     this.scrollPage();
+    setTimeout(()=>{refs.pageList.innerHTML = '';
+    refs.movieGallery.innerHTML = '';
     if (this.mode === PAGIN_MODES.TREND) {
       apiService.setPage(this.currentPage);
       renderTrending();
@@ -134,6 +134,6 @@ export default class Paginator {
     } else if (this.mode === PAGIN_MODES.QUEUE) {
       renderQueue(this.currentPage);
       return;
-    }
+    }},500)
   }
 }
