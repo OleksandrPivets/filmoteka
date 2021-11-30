@@ -142,7 +142,7 @@ ul {
     font-weight: 500;
     font-size: 12px;
     line-height: 1.1666;
- 
+
     text-align: center;
     text-transform: uppercase;
   }
@@ -152,4 +152,9 @@ ul {
   transition-property: color, fill, background-color, border, box-shadow, opacity, transform;
   transition-duration: 250ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.empty-lib {
+  width: 100%;
+  height: auto;
 }
