@@ -21,7 +21,6 @@ export async function renderSearchResults(searchQuery) {
   if (apiService.searchQuery === '') {
     return Notiflix.Notify.warning('The field is empty! Enter the title of the movie.');
   }
-
   const searchResults = await apiService.searchMovie();
   const movies = searchResults.results;
   //оповещение о не корректном вводе
@@ -29,8 +28,9 @@ export async function renderSearchResults(searchQuery) {
     refs.paginationRef.classList.add('is-hidden');
     return Notiflix.Notify.warning(
       'Search result not successful. Enter the correct movie name and',
-    );
-  }
+      );
+    }
+  refs.movieGallery.innerHTML = '';
 
   refs.movieGallery.insertAdjacentHTML('beforeend', galleryItems(movies));
   // Добавляем индикатор задержки загрузки
@@ -56,7 +56,7 @@ const search = event => {
   if (submitter) {
     event.preventDefault();
     apiService.resetPage();
-    refs.movieGallery.innerHTML = '';
+   
     if (searchQuery === '') {
       return;
     }

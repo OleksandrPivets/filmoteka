@@ -35,6 +35,7 @@ export const refs = {
   header: document.getElementById('header'),
   headerFormBox: document.getElementById('form-box'),
   headerButtonBox: document.getElementById('button-box'),
+  emptyLibImg: document.querySelector('.empty-lib'),
 
   // Секция пагинатора
   paginationRef: document.querySelector('.pagination-js'),
