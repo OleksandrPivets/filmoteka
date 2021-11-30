@@ -1,14 +1,13 @@
 import {refs} from './variables.global';
-const {buttonUpEl} = refs;
 
 window.addEventListener('scroll', showButtonUp);
-buttonUpEl.addEventListener('click', onButtonUpClick);
+refs.buttonUpEl.addEventListener('click', onButtonUpClick);
 
 function showButtonUp() {
   if (window.pageYOffset < document.documentElement.clientHeight) {
-    buttonUpEl.classList.add('visually-hidden');
+    refs.buttonUpEl.classList.add('visually-hidden');
   } else {
-    buttonUpEl.classList.remove('visually-hidden');
+    refs.buttonUpEl.classList.remove('visually-hidden');
   }
 }
 
