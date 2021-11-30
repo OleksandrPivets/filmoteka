@@ -15,6 +15,7 @@ body {
     .film__title {
       color: var(--main-text-dark-color);
     }
+
     .lightbox__content,
     .team,
     .button__modal,
@@ -37,6 +38,12 @@ body {
       transition: fill var(--animation-duration) cubic-bezier(0.4, 0, 0.2, 1);;
     }
   }
+
+    .film__genre {
+      text-shadow: -.2px -.1px .2px #fff,
+        .3px .4px 1px black;
+    }
+
   }
 }
 
