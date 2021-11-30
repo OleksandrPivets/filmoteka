@@ -14,6 +14,9 @@ export default class Paginator {
   }
   
   renderPagesList(page, totalPages, mode) {
+    if (totalPages === 0) {
+      refs.paginationRef.classList.add('is-hidden');
+    }
     if (totalPages === 1) {
       refs.paginationRef.classList.add('is-hidden');
       return;

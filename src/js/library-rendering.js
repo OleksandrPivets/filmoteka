@@ -6,7 +6,7 @@ import Notiflix from 'notiflix';
 import cardPerPage from './cardPerPage'
 
 export async function renderWatched(page) {
-  if (page === undefined) {
+  if (!page) {
     page = 1;
   }
   const watchedIds = ls.getWatched(page, cardPerPage());
@@ -18,7 +18,6 @@ export async function renderWatched(page) {
   if (!watchedMovies.length) {
     Notiflix.Notify.warning('The list is empty! Add film to watched.');
   }
-  console.log(watchedMovies);
   // Добавляем индикатор задержки загрузки
   const onLoadGallery = document.querySelectorAll('.film__card');
   delayIndicator(onLoadGallery, 'film__link', 'film__img', false);
@@ -45,7 +44,6 @@ export async function renderQueue(page) {
   if (!queueMovies.length) {
     Notiflix.Notify.warning('The list is empty! Add film to queue.');
   }
-  console.log(queueMovies);
   // Добавляем индикатор задержки загрузки
   const onLoadGallery = document.querySelectorAll('.film__card');
   delayIndicator(onLoadGallery, 'film__link', 'film__img', false);
