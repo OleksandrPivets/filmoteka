@@ -1,5 +1,4 @@
-import { apiService, paginator, PAGIN_MODES, refs } from './variables.global';
-import { getQueue, getWatched } from './LocalStorage';
+import { apiService, ls, paginator, PAGIN_MODES, refs } from './variables.global';
 import galleryItems from '../templates/card.hbs';
 import prepareForShow from './prepareForShow';
 import delayIndicator from './delayIndicator';
@@ -10,7 +9,7 @@ export async function renderWatched(page) {
   if (page === undefined) {
     page = 1;
   }
-  const watchedIds = getWatched(page, cardPerPage());
+  const watchedIds = ls.getWatched(page, cardPerPage());
   const totalPages = watchedIds.pages;
   const watchedMovies = await getLibraryMovies(watchedIds);
   refs.movieGallery.innerHTML = '';
@@ -37,7 +36,7 @@ export async function renderQueue(page) {
   if (!page) {
     page = 1;
   }
-  const queueIds = getQueue(1, cardPerPage());
+  const queueIds = ls.getQueue(1, cardPerPage());
   const totalPages = queueIds.pages;
   const queueMovies = await getLibraryMovies(queueIds);
   refs.movieGallery.innerHTML = '';

@@ -5,6 +5,7 @@
 //  Тут импорты
 import ApiService from './apiService';
 import Paginator from './pagination';
+import LS from './LocalStorage';
 
 //  Тут переменные
 export const PAGIN_MODES = {
@@ -15,6 +16,7 @@ export const PAGIN_MODES = {
 }
 export const apiService = new ApiService(); //  Апишка
 export const paginator = new Paginator();   //  Пагинация))
+export const ls = new LS();
 export const breakpoints = {
   // it, as is
   mobile: 320,
