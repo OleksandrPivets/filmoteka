@@ -19,7 +19,8 @@ body {
     .movie__vote-count,
     .movie__value-num,
     .movie__value-str-title,
-    .movie__value-str {
+    .movie__value-str,
+    .team__name {
       color: var(--main-text-dark-color);
     }
     .button__modal.contentDelete {
@@ -48,7 +49,8 @@ body {
         border: none;
       }
     }
-  .button-up{
+  .button-up,
+  .btn__close{
     fill: white;
     &:hover,
     &:focus {
