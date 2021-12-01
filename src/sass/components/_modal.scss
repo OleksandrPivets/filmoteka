@@ -9,6 +9,7 @@
   }
 
   &__overlay {
+    z-index: 100;
     position: fixed;
     top: 0;
     left: 0;
@@ -53,7 +54,6 @@
     background-color: transparent;
     fill: var(--main-text-light-color);
     cursor: pointer;
-    background-image: url('/images/icon-close.svg');
     background-position: center;
     background-repeat: no-repeat;
 
@@ -90,6 +90,7 @@
 
   &__title {
     font-family: var(--main-font);
+    // color: var(--main-text-light-color);
     font-weight: 500;
     font-size: 20px;
     line-height: 1.15;
@@ -131,21 +132,19 @@
 }
 
 .movie {
-  &__properties {
     font-weight: 500;
+  &__properties {
     font-size: 12px;
     line-height: 1.1666;
     color: #8c8c8c;
   }
   &__value-num {
-    font-weight: 500;
     font-size: 12px;
     line-height: 1.1666;
     display: flex;
   }
   &__value-str,
   &__value-str-title {
-    font-weight: 500;
     font-size: 12px;
     line-height: 1.333;
   }
@@ -174,21 +173,19 @@
   }
   &__vote-count {
     background-color: #f7f7f7;
-    color: var(--main-text-light-color);
   }
   &__vote-separator {
     color: #8c8c8c;
     margin: 0 3px;
   }
   &__title {
-    font-weight: 500;
     font-size: 12px;
     line-height: 1.333;
     text-transform: uppercase;
     margin-top: 20px;
   }
   &__overview {
-    font-weight: 500;
+    color: var(--main-text-light-color);
     font-size: 12px;
     line-height: 1.666;
     margin-top: 10px;
@@ -237,7 +234,7 @@
   }
 }
 .contentDelete {
-  border: 1px solid red;
-  color: red;
+  border: 1px solid var(--main-background-vote-color);
+  color: var(--main-background-vote-color);
   padding: 0 10px;
 }
