@@ -3,6 +3,17 @@ https://oleksandrpivets.github.io/filmoteka/
 
 
 
+Our Team
+
+Oleksandr Pivets
+Viktor Kaida
+Igor Polyakov
+Yura Batrak
+Julia Moskvita
+Ekaterina Folkina
+Oleksandra Masyuk
+Anton Diachenko
+
 
 
 # Parcel boilerplate
