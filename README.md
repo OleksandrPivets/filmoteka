@@ -1,18 +1,13 @@
-Filmoteka
-https://oleksandrpivets.github.io/filmoteka/
+Our Team:
 
-
-
-Our Team
-
-Oleksandr Pivets
-Viktor Kaida
-Igor Polyakov
-Yura Batrak
-Julia Moskvita
-Ekaterina Folkina
-Oleksandra Masyuk
-Anton Diachenko
+ - Oleksandr Pivets
+ - Viktor Kaida
+ - Igor Polyakov
+ - Yura Batrak
+ - Julia Moskvita
+ - Ekaterina Folkina
+ - Oleksandra Masyuk
+ - Anton Diachenko
 
 
 
