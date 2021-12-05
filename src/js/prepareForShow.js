@@ -12,7 +12,7 @@ export default function prepareForShow(array) {
     array.genres[2] = 'Other';
   }
   array.genreShow = array.genres.join(', '); // дорисовываем запятые
-  array.release_year = array.release_date.substring(0, 4); // делаем год релиза
+  if (array.release_year != 'Unknown') array.release_year = array.release_date.substring(0, 4); // делаем год релиза
 
   // answer = true;
   return array;
