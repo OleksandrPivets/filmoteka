@@ -12,8 +12,9 @@ export default class ApiService {
     const response = await fetch(url);
     const result = await response.json();
     result.results.map(movie => {
-      if (movie.poster_path)
-        movie.poster_path = 'https://image.tmdb.org/t/p/w500' + movie.poster_path;
+      const res = this.fixMovie(movie);
+      movie.poster_path = res.poster_path;
+      movie.release_year = res.release_year;
       movie.genres = movie.genre_ids.map(id => genres.genres.find(gen => gen.id === id).name);
       prepareForShow(movie);
       return movie;
@@ -25,8 +26,9 @@ export default class ApiService {
     const response = await fetch(url);
     const result = await response.json();
     result.results.map(movie => {
-      if (movie.poster_path)
-        movie.poster_path = 'https://image.tmdb.org/t/p/w500' + movie.poster_path;
+      const res = this.fixMovie(movie);
+      movie.poster_path = res.poster_path;
+      movie.release_year = res.release_year;
       movie.genres = movie.genre_ids.map(id => genres.genres.find(gen => gen.id === id).name);
       prepareForShow(movie);
       return movie;
@@ -36,9 +38,8 @@ export default class ApiService {
   async getMovieById(id) {
     const url = `${BASE_URL}/movie/${id}?api_key=${API_KEY}`;
     const response = await fetch(url);
-    const result = await response.json();
-    if (result.poster_path)
-      result.poster_path = 'https://image.tmdb.org/t/p/w500' + result.poster_path;
+    const resultJson = await response.json();
+    const result = this.fixMovie(resultJson);
     result.genres = result.genres.map(genre => genre.name);
     return result;
   }
@@ -69,5 +70,14 @@ export default class ApiService {
 
   set query(newQuery) {
     this.searchQuery = newQuery;
+  }
+  fixMovie(movie) {
+    let result = Object.assign({}, movie);
+    if (result.poster_path)
+      result.poster_path = 'https://image.tmdb.org/t/p/w500' + result.poster_path;
+    else result.poster_path = 'https://critics.io/img/movies/poster-placeholder.png';
+    if (!result.release_date) result.release_year = 'Unknown';
+    console.log(result.release_year);
+    return result;
   }
 }
